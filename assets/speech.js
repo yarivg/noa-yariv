@@ -29,17 +29,33 @@ window.Speech = (function () {
     window.speechSynthesis.onvoiceschanged = loadVoices;
   }
 
+  function isGoogle(v) { return /google/i.test(v.name || ''); }
+
+  /* Voice preference, in order:
+
+     1. Google. "Google français" and "Google עברית" are the two best
+        voices either language has in a browser, and they are the same
+        voice on every device that has them, so a word does not sound
+        like a different person on the phone than on the laptop. They
+        are network voices, which costs a round trip on first use, and
+        that is worth it: a wrong-sounding model of the language is the
+        one thing a pronunciation drill cannot afford.
+     2. Any other local voice, so Safari (Carmit for Hebrew, Thomas or
+        Amelie for French) and Firefox still speak.
+     3. Anything at all in the right language. */
   function voiceFor(lang) {
     if (!voices.length) loadVoices();
     var want = LOCALE[lang] || lang;
     var exact = voices.filter(function (v) { return v.lang === want; });
-    if (exact.length) {
-      // Prefer a local voice: no network round trip mid-round.
-      var local = exact.filter(function (v) { return v.localService; });
-      return (local[0] || exact[0]);
-    }
-    var loose = voices.filter(function (v) { return v.lang && v.lang.slice(0, 2) === want.slice(0, 2); });
-    return loose[0] || null;
+    var loose = voices.filter(function (v) {
+      return v.lang && v.lang.replace('_', '-').slice(0, 2) === want.slice(0, 2);
+    });
+    var pool = exact.length ? exact : loose;
+    if (!pool.length) return null;
+    var google = pool.filter(isGoogle);
+    if (google.length) return google[0];
+    var local = pool.filter(function (v) { return v.localService; });
+    return local[0] || pool[0];
   }
 
   function canSpeak(lang) { return !!(window.speechSynthesis && voiceFor(lang)); }
