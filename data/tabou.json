@@ -1,0 +1,554 @@
+{
+  "tabou": [
+    {
+      "id": "tb01",
+      "he": "חתול",
+      "t": "chatul",
+      "fr": "le chat",
+      "en": "cat",
+      "banned": {
+        "he": ["כלב", "חיה", "מיאו", "עכבר"],
+        "fr": ["chien", "animal", "miaou", "souris"]
+      }
+    },
+    {
+      "id": "tb02",
+      "he": "כלב",
+      "t": "kelev",
+      "fr": "le chien",
+      "en": "dog",
+      "banned": {
+        "he": ["חתול", "חיה", "נובח", "רצועה"],
+        "fr": ["chat", "animal", "aboyer", "laisse"]
+      }
+    },
+    {
+      "id": "tb03",
+      "he": "לחם",
+      "t": "lechem",
+      "fr": "le pain",
+      "en": "bread",
+      "banned": {
+        "he": ["מאפייה", "לאכול", "פרוסה", "חיטה"],
+        "fr": ["boulangerie", "manger", "tranche", "blé"]
+      }
+    },
+    {
+      "id": "tb04",
+      "he": "קפה",
+      "t": "kafe",
+      "fr": "le café",
+      "en": "coffee",
+      "banned": {
+        "he": ["לשתות", "בוקר", "חלב", "כוס"],
+        "fr": ["boire", "matin", "lait", "tasse"]
+      }
+    },
+    {
+      "id": "tb05",
+      "he": "גשם",
+      "t": "geshem",
+      "fr": "la pluie",
+      "en": "rain",
+      "banned": {
+        "he": ["מטרייה", "חורף", "מים", "רטוב"],
+        "fr": ["parapluie", "hiver", "eau", "mouillé"]
+      }
+    },
+    {
+      "id": "tb06",
+      "he": "חוף",
+      "t": "chof",
+      "fr": "la plage",
+      "en": "beach",
+      "banned": {
+        "he": ["ים", "חול", "שמש", "לשחות"],
+        "fr": ["mer", "sable", "soleil", "nager"]
+      }
+    },
+    {
+      "id": "tb07",
+      "he": "מכונית",
+      "t": "mechonit",
+      "fr": "la voiture",
+      "en": "car",
+      "banned": {
+        "he": ["לנהוג", "כביש", "גלגל", "נהג"],
+        "fr": ["conduire", "route", "roue", "chauffeur"]
+      }
+    },
+    {
+      "id": "tb08",
+      "he": "אופניים",
+      "t": "ofanayim",
+      "fr": "le vélo",
+      "en": "bicycle",
+      "banned": {
+        "he": ["גלגלים", "לרכוב", "דוושה", "קסדה"],
+        "fr": ["roues", "pédaler", "pédale", "casque"]
+      }
+    },
+    {
+      "id": "tb09",
+      "he": "טלפון",
+      "t": "telefon",
+      "fr": "le téléphone",
+      "en": "telephone",
+      "banned": {
+        "he": ["לצלצל", "לדבר", "נייד", "מסך"],
+        "fr": ["sonner", "parler", "portable", "écran"]
+      }
+    },
+    {
+      "id": "tb10",
+      "he": "מקרר",
+      "t": "mekarer",
+      "fr": "le réfrigérateur",
+      "en": "refrigerator",
+      "banned": {
+        "he": ["קר", "מטבח", "אוכל", "חלב"],
+        "fr": ["froid", "cuisine", "nourriture", "lait"]
+      }
+    },
+    {
+      "id": "tb11",
+      "he": "מקלחת",
+      "t": "miklachat",
+      "fr": "la douche",
+      "en": "shower",
+      "banned": {
+        "he": ["מים", "סבון", "אמבטיה", "להתרחץ"],
+        "fr": ["eau", "savon", "salle de bains", "se laver"]
+      }
+    },
+    {
+      "id": "tb12",
+      "he": "מיטה",
+      "t": "mita",
+      "fr": "le lit",
+      "en": "bed",
+      "banned": {
+        "he": ["לישון", "חדר שינה", "כרית", "שמיכה"],
+        "fr": ["dormir", "chambre", "oreiller", "couverture"]
+      }
+    },
+    {
+      "id": "tb13",
+      "he": "חלון",
+      "t": "chalon",
+      "fr": "la fenêtre",
+      "en": "window",
+      "banned": {
+        "he": ["זכוכית", "לפתוח", "קיר", "נוף"],
+        "fr": ["vitre", "ouvrir", "mur", "vue"]
+      }
+    },
+    {
+      "id": "tb14",
+      "he": "מפתח",
+      "t": "mafteach",
+      "fr": "la clé",
+      "en": "key",
+      "banned": {
+        "he": ["דלת", "לפתוח", "מנעול", "כיס"],
+        "fr": ["porte", "ouvrir", "serrure", "poche"]
+      }
+    },
+    {
+      "id": "tb15",
+      "he": "נעל",
+      "t": "na'al",
+      "fr": "la chaussure",
+      "en": "shoe",
+      "banned": {
+        "he": ["רגל", "ללכת", "שרוך", "גרב"],
+        "fr": ["pied", "marcher", "lacet", "chaussette"]
+      }
+    },
+    {
+      "id": "tb16",
+      "he": "מטרייה",
+      "t": "mitriya",
+      "fr": "le parapluie",
+      "en": "umbrella",
+      "banned": {
+        "he": ["גשם", "רטוב", "לפתוח", "ראש"],
+        "fr": ["pluie", "mouillé", "ouvrir", "tête"]
+      }
+    },
+    {
+      "id": "tb17",
+      "he": "אבטיח",
+      "t": "avatiach",
+      "fr": "la pastèque",
+      "en": "watermelon",
+      "banned": {
+        "he": ["פרי", "אדום", "קיץ", "גרעינים"],
+        "fr": ["fruit", "rouge", "été", "pépins"]
+      }
+    },
+    {
+      "id": "tb18",
+      "he": "גבינה",
+      "t": "gvina",
+      "fr": "le fromage",
+      "en": "cheese",
+      "banned": {
+        "he": ["חלב", "צהוב", "פרה", "לחם"],
+        "fr": ["lait", "jaune", "vache", "pain"]
+      }
+    },
+    {
+      "id": "tb19",
+      "he": "ביצה",
+      "t": "beitsa",
+      "fr": "l'œuf",
+      "en": "egg",
+      "banned": {
+        "he": ["תרנגולת", "חביתה", "לשבור", "צהוב"],
+        "fr": ["poule", "omelette", "casser", "jaune"]
+      }
+    },
+    {
+      "id": "tb20",
+      "he": "מרק",
+      "t": "marak",
+      "fr": "la soupe",
+      "en": "soup",
+      "banned": {
+        "he": ["חם", "כף", "קערה", "ירקות"],
+        "fr": ["chaud", "cuillère", "bol", "légumes"]
+      }
+    },
+    {
+      "id": "tb21",
+      "he": "מסעדה",
+      "t": "mis'ada",
+      "fr": "le restaurant",
+      "en": "restaurant",
+      "banned": {
+        "he": ["לאכול", "מלצר", "תפריט", "שולחן"],
+        "fr": ["manger", "serveur", "menu", "table"]
+      }
+    },
+    {
+      "id": "tb22",
+      "he": "שוק",
+      "t": "shuk",
+      "fr": "le marché",
+      "en": "market",
+      "banned": {
+        "he": ["ירקות", "לקנות", "דוכן", "מחיר"],
+        "fr": ["légumes", "acheter", "étal", "prix"]
+      }
+    },
+    {
+      "id": "tb23",
+      "he": "בנק",
+      "t": "bank",
+      "fr": "la banque",
+      "en": "bank",
+      "banned": {
+        "he": ["כסף", "כספומט", "חשבון", "כרטיס"],
+        "fr": ["argent", "distributeur", "compte", "carte"]
+      }
+    },
+    {
+      "id": "tb24",
+      "he": "בית חולים",
+      "t": "beit cholim",
+      "fr": "l'hôpital",
+      "en": "hospital",
+      "banned": {
+        "he": ["רופא", "חולה", "אחות", "אמבולנס"],
+        "fr": ["médecin", "malade", "infirmière", "ambulance"]
+      }
+    },
+    {
+      "id": "tb25",
+      "he": "מטוס",
+      "t": "matos",
+      "fr": "l'avion",
+      "en": "airplane",
+      "banned": {
+        "he": ["לטוס", "שדה תעופה", "כנפיים", "שמיים"],
+        "fr": ["voler", "aéroport", "ailes", "ciel"]
+      }
+    },
+    {
+      "id": "tb26",
+      "he": "רכבת",
+      "t": "rakevet",
+      "fr": "le train",
+      "en": "train",
+      "banned": {
+        "he": ["תחנה", "מסילה", "נוסעים", "כרטיס"],
+        "fr": ["gare", "rails", "passagers", "billet"]
+      }
+    },
+    {
+      "id": "tb27",
+      "he": "אוטובוס",
+      "t": "otobus",
+      "fr": "le bus",
+      "en": "bus",
+      "banned": {
+        "he": ["תחנה", "נהג", "נוסעים", "כרטיס"],
+        "fr": ["arrêt", "chauffeur", "passagers", "ticket"]
+      }
+    },
+    {
+      "id": "tb28",
+      "he": "ים",
+      "t": "yam",
+      "fr": "la mer",
+      "en": "sea",
+      "banned": {
+        "he": ["מים", "מלח", "גלים", "חוף"],
+        "fr": ["eau", "sel", "vagues", "plage"]
+      }
+    },
+    {
+      "id": "tb29",
+      "he": "הר",
+      "t": "har",
+      "fr": "la montagne",
+      "en": "mountain",
+      "banned": {
+        "he": ["גבוה", "לטפס", "שלג", "פסגה"],
+        "fr": ["haut", "grimper", "neige", "sommet"]
+      }
+    },
+    {
+      "id": "tb30",
+      "he": "שלג",
+      "t": "sheleg",
+      "fr": "la neige",
+      "en": "snow",
+      "banned": {
+        "he": ["לבן", "קר", "חורף", "חרמון"],
+        "fr": ["blanc", "froid", "hiver", "flocon"]
+      }
+    },
+    {
+      "id": "tb31",
+      "he": "שמש",
+      "t": "shemesh",
+      "fr": "le soleil",
+      "en": "sun",
+      "banned": {
+        "he": ["חם", "אור", "שמיים", "צהוב"],
+        "fr": ["chaud", "lumière", "ciel", "jaune"]
+      }
+    },
+    {
+      "id": "tb32",
+      "he": "ירח",
+      "t": "yare'ach",
+      "fr": "la lune",
+      "en": "moon",
+      "banned": {
+        "he": ["לילה", "שמיים", "כוכבים", "עגול"],
+        "fr": ["nuit", "ciel", "étoiles", "rond"]
+      }
+    },
+    {
+      "id": "tb33",
+      "he": "תינוק",
+      "t": "tinok",
+      "fr": "le bébé",
+      "en": "baby",
+      "banned": {
+        "he": ["לבכות", "קטן", "אמא", "חיתול"],
+        "fr": ["pleurer", "petit", "maman", "couche"]
+      }
+    },
+    {
+      "id": "tb34",
+      "he": "רופא",
+      "t": "rofe",
+      "fr": "le médecin",
+      "en": "doctor",
+      "banned": {
+        "he": ["חולה", "בית חולים", "תרופה", "קליניקה"],
+        "fr": ["malade", "hôpital", "médicament", "cabinet"]
+      }
+    },
+    {
+      "id": "tb35",
+      "he": "מורה",
+      "t": "more",
+      "fr": "le professeur",
+      "en": "teacher",
+      "banned": {
+        "he": ["בית ספר", "תלמידים", "כיתה", "ללמד"],
+        "fr": ["école", "élèves", "classe", "enseigner"]
+      }
+    },
+    {
+      "id": "tb36",
+      "he": "שוטר",
+      "t": "shoter",
+      "fr": "le policier",
+      "en": "police officer",
+      "banned": {
+        "he": ["משטרה", "גנב", "מדים", "אקדח"],
+        "fr": ["police", "voleur", "uniforme", "pistolet"]
+      }
+    },
+    {
+      "id": "tb37",
+      "he": "מלצר",
+      "t": "meltsar",
+      "fr": "le serveur",
+      "en": "waiter",
+      "banned": {
+        "he": ["מסעדה", "תפריט", "להזמין", "טיפ"],
+        "fr": ["restaurant", "menu", "commander", "pourboire"]
+      }
+    },
+    {
+      "id": "tb38",
+      "he": "חתונה",
+      "t": "chatuna",
+      "fr": "le mariage",
+      "en": "wedding",
+      "banned": {
+        "he": ["כלה", "חתן", "טבעת", "שמלה"],
+        "fr": ["mariée", "marié", "bague", "robe"]
+      }
+    },
+    {
+      "id": "tb39",
+      "he": "יום הולדת",
+      "t": "yom huledet",
+      "fr": "l'anniversaire",
+      "en": "birthday",
+      "banned": {
+        "he": ["עוגה", "נרות", "מתנה", "שנה"],
+        "fr": ["gâteau", "bougies", "cadeau", "an"]
+      }
+    },
+    {
+      "id": "tb40",
+      "he": "בריכה",
+      "t": "brecha",
+      "fr": "la piscine",
+      "en": "swimming pool",
+      "banned": {
+        "he": ["מים", "לשחות", "בגד ים", "כלור"],
+        "fr": ["eau", "nager", "maillot", "chlore"]
+      }
+    },
+    {
+      "id": "tb41",
+      "he": "מעלית",
+      "t": "ma'alit",
+      "fr": "l'ascenseur",
+      "en": "elevator",
+      "banned": {
+        "he": ["קומה", "כפתור", "בניין", "לעלות"],
+        "fr": ["étage", "bouton", "immeuble", "monter"]
+      }
+    },
+    {
+      "id": "tb42",
+      "he": "מדרגות",
+      "t": "madregot",
+      "fr": "les escaliers",
+      "en": "stairs",
+      "banned": {
+        "he": ["לעלות", "לרדת", "קומה", "מעלית"],
+        "fr": ["monter", "descendre", "étage", "ascenseur"]
+      }
+    },
+    {
+      "id": "tb43",
+      "he": "מראה",
+      "t": "mar'a",
+      "fr": "le miroir",
+      "en": "mirror",
+      "banned": {
+        "he": ["להסתכל", "פנים", "זכוכית", "אמבטיה"],
+        "fr": ["regarder", "visage", "verre", "salle de bains"]
+      }
+    },
+    {
+      "id": "tb44",
+      "he": "מברשת שיניים",
+      "t": "mivreshet shinayim",
+      "fr": "la brosse à dents",
+      "en": "toothbrush",
+      "banned": {
+        "he": ["שיניים", "לצחצח", "משחה", "פה"],
+        "fr": ["dents", "brosser", "dentifrice", "bouche"]
+      }
+    },
+    {
+      "id": "tb45",
+      "he": "מכונת כביסה",
+      "t": "mechonat kvisa",
+      "fr": "la machine à laver",
+      "en": "washing machine",
+      "banned": {
+        "he": ["בגדים", "מים", "סבון", "לכבס"],
+        "fr": ["vêtements", "eau", "savon", "laver"]
+      }
+    },
+    {
+      "id": "tb46",
+      "he": "מזגן",
+      "t": "mazgan",
+      "fr": "la climatisation",
+      "en": "air conditioner",
+      "banned": {
+        "he": ["קר", "חם", "קיץ", "שלט"],
+        "fr": ["froid", "chaud", "été", "télécommande"]
+      }
+    },
+    {
+      "id": "tb47",
+      "he": "מזוודה",
+      "t": "mizvada",
+      "fr": "la valise",
+      "en": "suitcase",
+      "banned": {
+        "he": ["נסיעה", "בגדים", "שדה תעופה", "גלגלים"],
+        "fr": ["voyage", "vêtements", "aéroport", "roues"]
+      }
+    },
+    {
+      "id": "tb48",
+      "he": "דרכון",
+      "t": "darkon",
+      "fr": "le passeport",
+      "en": "passport",
+      "banned": {
+        "he": ["נסיעה", "גבול", "תמונה", "שדה תעופה"],
+        "fr": ["voyage", "frontière", "photo", "aéroport"]
+      }
+    },
+    {
+      "id": "tb49",
+      "he": "שעון",
+      "t": "sha'on",
+      "fr": "la montre",
+      "en": "watch",
+      "banned": {
+        "he": ["זמן", "שעה", "יד", "מחוגים"],
+        "fr": ["temps", "heure", "poignet", "aiguilles"]
+      }
+    },
+    {
+      "id": "tb50",
+      "he": "גלידה",
+      "t": "glida",
+      "fr": "la glace",
+      "en": "ice cream",
+      "banned": {
+        "he": ["קר", "מתוק", "קיץ", "גביע"],
+        "fr": ["froid", "sucré", "été", "cornet"]
+      }
+    }
+  ]
+}

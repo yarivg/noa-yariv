@@ -1,0 +1,245 @@
+/* ============================================================
+   pingpong.css — Ping-Pong.
+
+   Every selector is scoped under .pingpong-game, which the module
+   adds to its own root. The shell classes (.hud, .card, .big-btn,
+   .who-noa, .who-yariv …) are styled elsewhere and only extended
+   here, never redefined.
+
+   The screen is read from two arm-lengths away by two people
+   sharing a phone, so the chain number is the biggest thing on it
+   and the handover card covers everything else on purpose.
+   ============================================================ */
+
+.pingpong-game {
+  position: relative;
+}
+
+/* ---------------------------------------------------------- hud */
+
+.pingpong-game .pp-hud {
+  align-items: center;
+}
+
+.pingpong-game .pp-lives {
+  display: flex;
+  gap: 2px;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.pingpong-game .pp-heart {
+  transition: transform .2s ease;
+}
+
+.pingpong-game .pp-heart.gone {
+  opacity: .45;
+  transform: scale(.82);
+}
+
+.pingpong-game .pp-chain-cell {
+  flex: 1.2;
+}
+
+.pingpong-game .pp-chain-num {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--purple);
+  letter-spacing: -1px;
+}
+
+.pingpong-game .pp-chain-num.pop {
+  animation: pp-pop .45s cubic-bezier(.2, 1.6, .4, 1);
+}
+
+@keyframes pp-pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.35); color: var(--yellow); }
+  100% { transform: scale(1); }
+}
+
+.pingpong-game .pp-turn {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* .who-noa / .who-yariv only carry the colour; the chip shape is ours. */
+.pingpong-game .pp-who {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 13px;
+  background: rgba(0, 0, 0, .06);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------- clock */
+
+.pingpong-game .pp-clock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 10px 0 6px;
+}
+
+.pingpong-game .pp-clock .timebar {
+  flex: 1;
+}
+
+.pingpong-game .pp-secs {
+  min-width: 58px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.pingpong-game .pp-secs.urgent {
+  color: var(--red);
+  animation: pp-throb .5s ease-in-out infinite;
+}
+
+@keyframes pp-throb {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.14); }
+}
+
+/* ---------------------------------------------------------- tally */
+
+.pingpong-game .pp-tally {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.pingpong-game .pp-tal {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 0;
+}
+
+.pingpong-game .pp-tal span:nth-child(2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.pingpong-game .pp-tal b {
+  margin-left: auto;
+  font-size: 19px;
+  font-weight: 800;
+}
+
+/* ---------------------------------------------------------- card */
+
+/* A hairline in the answering player's colour, so a glance at the card
+   is enough to know whose turn is on screen. */
+.pingpong-game .pp-card.who-noa   { border-bottom: 6px solid var(--pink); }
+.pingpong-game .pp-card.who-yariv { border-bottom: 6px solid var(--blue); }
+
+/* ---------------------------------------------------------- handover */
+
+.pingpong-game .pp-handover {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
+  text-align: center;
+  background: var(--bg);
+  animation: pp-slide .28s ease-out;
+}
+
+.pingpong-game .pp-handover.who-noa {
+  background: linear-gradient(160deg, #ffe6ee 0%, #fff7f2 60%);
+}
+
+.pingpong-game .pp-handover.who-yariv {
+  background: linear-gradient(160deg, #dff4ff 0%, #fff7f2 60%);
+}
+
+@keyframes pp-slide {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pingpong-game .pp-ho-emoji {
+  font-size: clamp(84px, 30vw, 140px);
+  line-height: 1;
+  animation: pp-bob 1.8s ease-in-out infinite;
+}
+
+@keyframes pp-bob {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-10px) rotate(3deg); }
+}
+
+.pingpong-game .pp-ho-pass {
+  font-size: clamp(24px, 7vw, 34px);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.pingpong-game .pp-ho-task {
+  font-size: 15px;
+  font-weight: 600;
+  opacity: .7;
+}
+
+.pingpong-game .pp-ho-state {
+  display: flex;
+  gap: 14px;
+  font-size: 18px;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .75);
+  box-shadow: var(--shadow);
+}
+
+.pingpong-game .pp-handover .big-btn {
+  width: 100%;
+  max-width: 340px;
+  margin-top: 6px;
+}
+
+.pingpong-game .pp-handover .ghost-btn {
+  min-height: 44px;
+}
+
+/* Only the two ends need to be thumb-reachable, so on a tall phone the
+   button sits low and the emoji takes the space above it. */
+@media (min-height: 700px) {
+  .pingpong-game .pp-handover {
+    justify-content: space-evenly;
+  }
+}
+
+/* ---------------------------------------------------------- misc */
+
+.pingpong-game .action-zone .big-btn,
+.pingpong-game .self-btns .big-btn {
+  min-height: 56px;
+}
+
+.pingpong-game .card-word.rtl,
+.pingpong-game .answer-peek .rtl,
+.pingpong-game .answer-reveal .rtl {
+  direction: rtl;
+}

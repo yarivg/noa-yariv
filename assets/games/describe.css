@@ -1,0 +1,237 @@
+/* ============================================================
+   describe.css - the picture game.
+
+   Everything is scoped under .describe-game, which describe.js adds
+   to its own root, so nothing here can leak into another game.
+
+   The picture is the whole screen on a phone, so it is sized in
+   viewport units with a floor: the chips underneath must stay in
+   the thumb zone even on a short screen, which is why the frame
+   is allowed to shrink but the chip row never is.
+   ============================================================ */
+
+.describe-game {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ---------------------------------------------------------- picture */
+
+.describe-game .pic-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.describe-game .pic-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(200px, 38vh, 340px);
+  border-radius: var(--r);
+  border: 5px solid #fff;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  /* The frame is the stage for absolutely placed emoji, so it must
+     never be allowed to size itself from its children. */
+  contain: paint;
+}
+
+/* Soft washes, one per scene, so three pictures do not blur together. */
+.describe-game .pic-frame.tint-sun   { background: linear-gradient(160deg, #fff2c4, #ffd9a8); }
+.describe-game .pic-frame.tint-sea   { background: linear-gradient(160deg, #d3f1ff, #b9e3ff); }
+.describe-game .pic-frame.tint-mint  { background: linear-gradient(160deg, #d9f8e4, #bfeed3); }
+.describe-game .pic-frame.tint-berry { background: linear-gradient(160deg, #ffe0ea, #ffcbdd); }
+.describe-game .pic-frame.tint-plum  { background: linear-gradient(160deg, #e9e2ff, #d6cbff); }
+
+.describe-game .pic-bit {
+  position: absolute;
+  line-height: 1;
+  /* Rotation is set inline per emoji; the float only nudges, so it
+     cannot fight the inline transform if it stays on translate-free
+     properties. */
+  animation-name: dsc-float;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-direction: alternate;
+  filter: drop-shadow(0 4px 6px rgba(43, 36, 64, .18));
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes dsc-float {
+  from { margin-top: -5px; }
+  to   { margin-top: 5px; }
+}
+
+.describe-game .pic-frame.cleared {
+  border-color: var(--green);
+  animation: dsc-pulse .5s ease 2;
+}
+
+@keyframes dsc-pulse {
+  50% { box-shadow: 0 0 0 8px rgba(46, 204, 113, .3); }
+}
+
+.describe-game .pic-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: .8;
+  font-size: .95rem;
+  padding: 0 4px;
+}
+
+.describe-game .clear-bonus,
+.describe-game .clear-miss {
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-weight: 700;
+  color: #fff;
+  font-size: .85rem;
+}
+.describe-game .clear-bonus { background: var(--green); }
+.describe-game .clear-miss  { background: var(--red); }
+
+/* ---------------------------------------------------------- chips */
+
+.describe-game .chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  /* Wrapping, never scrolling: a horizontal scroller here would hide
+     targets the player has no way of knowing exist. */
+}
+
+.describe-game .chip {
+  position: relative;
+  flex: 1 1 30%;
+  min-width: 100px;
+  min-height: 58px;
+  padding: 0;
+  border: 0;
+  background: none;
+  perspective: 600px;
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.describe-game .chip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 58px;
+  transition: transform .45s cubic-bezier(.2, .9, .3, 1.4);
+  transform-style: preserve-3d;
+}
+
+.describe-game .chip.flipped .chip-inner { transform: rotateY(180deg); }
+
+.describe-game .chip-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  border-radius: 16px;
+  padding: 6px 8px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 3px 0 rgba(43, 36, 64, .16);
+  overflow: hidden;
+}
+
+.describe-game .chip-front {
+  background: var(--card);
+  border: 3px dashed rgba(124, 92, 255, .35);
+  color: var(--ink);
+}
+.describe-game .chip-front small {
+  font-size: .72rem;
+  opacity: .7;
+  text-align: center;
+  line-height: 1.1;
+}
+.describe-game .chip-front b {
+  font-size: 1.2rem;
+  color: var(--purple);
+}
+
+.describe-game .chip-back {
+  transform: rotateY(180deg);
+  background: var(--green);
+  color: #fff;
+  border: 3px solid rgba(255, 255, 255, .55);
+}
+.describe-game .chip.chip-bad .chip-back { background: var(--red); }
+
+.describe-game .chip-word {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+}
+.describe-game .chip-tr {
+  font-size: .68rem;
+  opacity: .85;
+}
+
+/* Only the honour-system board invites a tap, so only it looks
+   pressable. In mic mode the chip is a passive slot. */
+.describe-game .chip-row.tappable .chip:not(.flipped) .chip-front {
+  border-style: solid;
+  border-color: var(--purple);
+  box-shadow: 0 4px 0 var(--purple);
+}
+.describe-game .chip-row.tappable .chip:not(.flipped):active .chip-inner {
+  transform: translateY(3px);
+}
+
+.describe-game .chip .points-pop {
+  position: absolute;
+  top: -6px;
+  right: 2px;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------- strips */
+
+.describe-game .honour {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  align-items: center;
+  text-align: center;
+  background: rgba(124, 92, 255, .1);
+  border-radius: var(--r);
+  padding: 10px 12px;
+}
+.describe-game .honour small { opacity: .75; }
+
+/* The transcript can run long; it must never widen the page. */
+.describe-game .heard {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------- small screens */
+
+@media (max-height: 700px) {
+  .describe-game .pic-frame { height: clamp(160px, 30vh, 240px); }
+  .describe-game .chip { min-width: 92px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .describe-game .pic-bit { animation: none; }
+  .describe-game .chip-inner { transition-duration: .01s; }
+  .describe-game .pic-frame.cleared { animation: none; }
+}

@@ -1,0 +1,406 @@
+/* ============================================================
+   headsup.css — On My Forehead.
+
+   Two very different screens live in here. The setup and review
+   screens are ordinary page content. The play screen is not: it is
+   a fixed, full-bleed slab that covers the topbar, because the
+   phone is sideways on someone's forehead and the only thing that
+   matters is that one word is legible from across the room, and
+   that the verdict colour is readable by the partner standing
+   opposite who cannot see any text at all.
+
+   Everything is scoped under .headsup-game.
+   ============================================================ */
+
+/* ---------------------------------------------------------- setup */
+
+.headsup-game .hu-setup { text-align: center; }
+
+.headsup-game .hu-step {
+  margin: 22px 0 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: .7;
+  letter-spacing: .02em;
+}
+
+.headsup-game .hu-who-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.headsup-game .hu-who {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  color: #fff;
+  padding: 16px 10px;
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  background: var(--purple);
+  transition: transform .12s ease, filter .12s ease;
+  filter: saturate(.55) brightness(.92);
+}
+.headsup-game .hu-who.who-noa { background: linear-gradient(160deg, var(--pink), var(--purple)); }
+.headsup-game .hu-who.who-yariv { background: linear-gradient(160deg, var(--blue), var(--green)); }
+.headsup-game .hu-who.picked { filter: none; transform: translateY(-3px) scale(1.02); }
+.headsup-game .hu-who:active { transform: scale(.97); }
+
+.headsup-game .hu-who-emoji { font-size: 2.4rem; line-height: 1.1; }
+.headsup-game .hu-who-name { font-size: 1.3rem; font-weight: 700; }
+.headsup-game .hu-who-lang { font-size: .82rem; opacity: .9; }
+.headsup-game .hu-who-tag {
+  margin-top: 6px;
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  background: rgba(255, 255, 255, .25);
+  border-radius: 999px;
+  padding: 2px 8px;
+  display: inline-block;
+}
+
+.headsup-game .hu-deck-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
+  gap: 10px;
+}
+
+.headsup-game .hu-deck {
+  border: 3px solid transparent;
+  cursor: pointer;
+  font: inherit;
+  color: var(--ink);
+  background: var(--card);
+  border-radius: var(--r);
+  padding: 12px 6px;
+  box-shadow: var(--shadow);
+  transition: transform .12s ease, border-color .12s ease;
+}
+.headsup-game .hu-deck:active { transform: scale(.95); }
+.headsup-game .hu-deck.picked {
+  border-color: var(--purple);
+  transform: translateY(-3px);
+}
+.headsup-game .hu-deck-emoji { font-size: 2rem; line-height: 1.2; }
+.headsup-game .hu-deck-name { font-size: .85rem; font-weight: 600; }
+
+.headsup-game .hu-setup .big-btn { margin-top: 22px; width: 100%; }
+.headsup-game .hu-setup .big-btn[disabled] { opacity: .45; pointer-events: none; }
+
+.headsup-game .hu-empty { text-align: center; }
+
+/* ---------------------------------------------------------- play */
+
+/* Fixed, so it escapes the page padding and the topbar. The whole
+   screen is the controller. */
+.headsup-game .hu-stage {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 60;
+  overflow: hidden;
+  background: linear-gradient(165deg, #3a2f6b, var(--ink));
+  color: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* The two fat targets. They cover the entire screen between them so
+   the holder can hit one blind, with the phone against their head. */
+.headsup-game .hu-half {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  z-index: 1;
+  display: flex;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+}
+.headsup-game .hu-pass { top: 0; align-items: flex-start; justify-content: center; }
+.headsup-game .hu-hit { bottom: 0; align-items: flex-end; justify-content: center; }
+.headsup-game .hu-pass:active { background: rgba(255, 71, 87, .35); }
+.headsup-game .hu-hit:active { background: rgba(46, 204, 113, .35); }
+
+.headsup-game .hu-half-label {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  padding: 6px 18px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .14);
+  margin: 40px 0 14px;
+}
+.headsup-game .hu-hit .hu-half-label { background: rgba(46, 204, 113, .3); margin: 14px 0 18px; }
+.headsup-game .hu-pass .hu-half-label { background: rgba(255, 71, 87, .28); }
+
+/* The card is a display, not a control: taps go straight through it
+   to whichever half is underneath. */
+.headsup-game .hu-card {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+  text-align: center;
+  padding: 0 12px;
+}
+
+.headsup-game .hu-emoji {
+  font-size: min(13vw, 20vh);
+  line-height: 1;
+}
+
+.headsup-game .hu-word {
+  font-size: min(15vw, 24vh);
+  line-height: 1.02;
+  font-weight: 700;
+  margin-top: 2vh;
+  text-shadow: 0 4px 0 rgba(0, 0, 0, .25);
+  word-break: break-word;
+}
+.headsup-game .hu-word.rtl {
+  direction: rtl;
+  font-family: 'Heebo', system-ui, sans-serif;
+  font-weight: 900;
+}
+
+.headsup-game .hu-tr {
+  font-size: min(5vw, 7vh);
+  opacity: .72;
+  font-weight: 500;
+  margin-top: .4vh;
+}
+
+.headsup-game .hu-card.deal { animation: hu-deal .26s ease-out; }
+@keyframes hu-deal {
+  from { opacity: 0; transform: translateY(-50%) scale(.86) rotate(-2deg); }
+  to   { opacity: 1; transform: translateY(-50%) scale(1) rotate(0); }
+}
+
+/* ---------------------------------------------------------- hud */
+
+.headsup-game .hu-hud {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  pointer-events: none;
+}
+.headsup-game .hu-hud .hud-cell {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 1.1rem;
+  min-width: 2.6em;
+  text-align: center;
+  background: rgba(0, 0, 0, .22);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+.headsup-game .hu-hud .hud-time.urgent {
+  color: var(--yellow);
+  animation: hu-pulse .5s ease-in-out infinite;
+}
+@keyframes hu-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.22); }
+}
+
+.headsup-game .hu-bar {
+  flex: 1;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .18);
+  overflow: hidden;
+}
+.headsup-game .hu-bar > i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green), var(--yellow), var(--orange));
+}
+
+.headsup-game .hu-quit {
+  pointer-events: auto;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  color: #fff;
+  background: rgba(0, 0, 0, .25);
+  border-radius: 999px;
+  width: 30px;
+  height: 30px;
+}
+
+.headsup-game .hu-combo {
+  position: absolute;
+  top: 42px;
+  right: 14px;
+  z-index: 3;
+  pointer-events: none;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--yellow);
+}
+
+.headsup-game .hu-note {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: 4px;
+  z-index: 3;
+  pointer-events: none;
+  text-align: center;
+  font-size: .72rem;
+  opacity: .7;
+  padding: 0 12px;
+}
+
+/* ---------------------------------------------------------- verdict */
+
+/* The whole screen, one colour. The describer is standing opposite
+   and reads the round off this alone. */
+.headsup-game .hu-flash {
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+}
+.headsup-game .hu-flash.good { background: var(--green); }
+.headsup-game .hu-flash.bad { background: var(--red); }
+.headsup-game .hu-flash.on { animation: hu-flash .62s ease-out forwards; }
+@keyframes hu-flash {
+  0% { opacity: 0; }
+  8% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.headsup-game .hu-flash-glyph {
+  font-size: min(38vw, 52vh);
+  line-height: 1;
+  animation: hu-pop .4s cubic-bezier(.2, 1.6, .4, 1);
+}
+@keyframes hu-pop {
+  from { transform: scale(.3); }
+  to { transform: scale(1); }
+}
+
+/* ---------------------------------------------------------- review */
+
+.headsup-game .hu-review {
+  background: var(--card);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 16px;
+}
+
+.headsup-game .hu-rev-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  border-radius: var(--r);
+  padding: 12px 16px;
+  background: var(--purple);
+}
+.headsup-game .hu-rev-head.who-noa { background: linear-gradient(120deg, var(--pink), var(--purple)); }
+.headsup-game .hu-rev-head.who-yariv { background: linear-gradient(120deg, var(--blue), var(--green)); }
+.headsup-game .hu-rev-emoji { font-size: 2rem; }
+.headsup-game .hu-rev-title { font-size: 1.2rem; font-weight: 700; flex: 1; text-align: left; }
+.headsup-game .hu-rev-score { font-size: 2.2rem; font-weight: 700; line-height: 1; }
+.headsup-game .hu-rev-head small { opacity: .85; font-size: .7rem; }
+
+.headsup-game .hu-rev-sub {
+  text-align: center;
+  font-size: .9rem;
+  font-weight: 600;
+  opacity: .75;
+  margin: 10px 0 4px;
+}
+
+.headsup-game .hu-rev-list {
+  max-height: 46vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 8px 0;
+}
+
+.headsup-game .hu-rev-none {
+  text-align: center;
+  opacity: .6;
+  padding: 18px 0;
+}
+
+.headsup-game .hu-rev-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 14px;
+  margin-bottom: 6px;
+  background: rgba(0, 0, 0, .04);
+}
+.headsup-game .hu-rev-row.hit { background: rgba(46, 204, 113, .16); }
+.headsup-game .hu-rev-row.miss { background: rgba(255, 71, 87, .13); }
+
+.headsup-game .hu-rev-mark { font-size: 1.1rem; }
+.headsup-game .hu-rev-face { font-size: 1.5rem; }
+.headsup-game .hu-rev-words { flex: 1; display: flex; flex-direction: column; text-align: left; min-width: 0; }
+.headsup-game .hu-rev-words b { font-size: 1.15rem; }
+.headsup-game .hu-rev-words b.rtl {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Heebo', system-ui, sans-serif;
+}
+.headsup-game .hu-rev-tr { opacity: .7; font-size: .78rem; }
+.headsup-game .hu-rev-en { opacity: .55; font-size: .78rem; }
+
+.headsup-game .hu-say {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1rem;
+  background: rgba(0, 0, 0, .06);
+  border-radius: 999px;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+}
+.headsup-game .hu-say:active { transform: scale(.9); }
+
+.headsup-game .hu-rev-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+.headsup-game .hu-rev-btns .big-btn { width: 100%; }
+
+/* ---------------------------------------------------------- landscape */
+
+/* The way this game is actually held. Short screens, so the chrome
+   gets out of the way and the word takes everything left over. */
+@media (orientation: landscape) and (max-height: 520px) {
+  .headsup-game .hu-emoji { font-size: min(9vw, 22vh); }
+  .headsup-game .hu-word { font-size: min(12vw, 30vh); margin-top: 0; }
+  .headsup-game .hu-tr { font-size: min(3.4vw, 9vh); }
+  .headsup-game .hu-half-label { margin: 34px 0 8px; font-size: .95rem; }
+  .headsup-game .hu-hit .hu-half-label { margin: 8px 0 10px; }
+  .headsup-game .hu-rev-list { max-height: 38vh; }
+}

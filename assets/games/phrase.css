@@ -1,0 +1,183 @@
+/* ============================================================
+   phrase.css: Phrase Race.
+
+   Everything here is scoped under .phrase-game, which phrase.js adds
+   to its own root. The shared furniture (.card, .hud, .big-btn,
+   .listening, .answer-reveal) is styled globally and deliberately
+   left alone; this file only draws what is unique to this game,
+   which is the word tiles and the line you build them into.
+   ============================================================ */
+
+/* The prompt is a whole sentence, so it cannot be as loud as a
+   single word card. Give it room to wrap instead. */
+.phrase-game .phrase-prompt {
+  font-size: clamp(20px, 6vw, 30px);
+  line-height: 1.35;
+  text-wrap: balance;
+}
+
+.phrase-game .phrase-timerow {
+  display: flex;
+  justify-content: center;
+  margin: 6px 0 10px;
+}
+
+.phrase-game .phrase-timerow .hud-time {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink);
+  opacity: .55;
+}
+
+.phrase-game .phrase-timerow .hud-time.urgent {
+  opacity: 1;
+  color: var(--red);
+  animation: phrase-pulse .6s ease-in-out infinite;
+}
+
+@keyframes phrase-pulse {
+  50% { transform: scale(1.12); }
+}
+
+/* ---------------------------------------------------------- build */
+
+.phrase-game .build-zone {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.phrase-game .build-hint {
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .5;
+}
+
+/* The line you are filling. Dashed, sunken, obviously a destination. */
+.phrase-game .answer-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 76px;
+  padding: 12px;
+  border-radius: var(--r);
+  border: 3px dashed rgba(43, 36, 64, .18);
+  background: rgba(124, 92, 255, .06);
+}
+
+/* Hebrew reads right to left, so the first tile tapped must land on
+   the right. DOM order stays logical; only the paint direction flips. */
+.phrase-game .answer-line.rtl,
+.phrase-game .chip-tray.rtl {
+  flex-direction: row-reverse;
+}
+
+.phrase-game .slot {
+  width: 44px;
+  height: 12px;
+  border-radius: 8px;
+  background: rgba(43, 36, 64, .12);
+}
+
+.phrase-game .chip-tray {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 4px 2px 8px;
+}
+
+/* Tiles are buttons, sized for a thumb on a phone, never a hover target. */
+.phrase-game .chip {
+  min-height: 56px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--card);
+  color: var(--ink);
+  font-family: 'Fredoka', system-ui, sans-serif;
+  font-size: clamp(17px, 4.6vw, 22px);
+  font-weight: 600;
+  line-height: 1.1;
+  cursor: pointer;
+  box-shadow: 0 4px 0 rgba(43, 36, 64, .18), var(--shadow);
+  transition: transform .12s cubic-bezier(.34, 1.56, .64, 1), box-shadow .12s ease, background .12s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.phrase-game .chip:active {
+  transform: translateY(3px) scale(.97);
+  box-shadow: 0 1px 0 rgba(43, 36, 64, .18);
+}
+
+.phrase-game .chip.in-line {
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 4px 0 rgba(43, 36, 64, .25);
+}
+
+.phrase-game .chip.chip-ok {
+  background: var(--green);
+  color: #fff;
+}
+
+.phrase-game .chip.chip-bad {
+  background: var(--red);
+  color: #fff;
+  animation: phrase-shake .34s ease;
+}
+
+@keyframes phrase-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px) rotate(-2deg); }
+  75% { transform: translateX(6px) rotate(2deg); }
+}
+
+/* Hebrew wants Heebo and a bit more line height than Fredoka gives. */
+.phrase-game .chip.rtl {
+  font-family: 'Heebo', system-ui, sans-serif;
+  direction: rtl;
+  line-height: 1.35;
+}
+
+/* ---------------------------------------------------------- say */
+
+.phrase-game .say-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.phrase-game .say-note {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: .6;
+}
+
+.phrase-game .say-note.miss {
+  color: var(--orange);
+  opacity: 1;
+  word-break: break-word;
+}
+
+/* ---------------------------------------------------------- safety */
+
+/* Long French sentences and wide tiles must never push the page
+   sideways on a narrow phone. */
+.phrase-game {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.phrase-game .chip,
+.phrase-game .phrase-prompt,
+.phrase-game .heard {
+  overflow-wrap: anywhere;
+}

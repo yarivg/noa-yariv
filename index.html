@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#ff5d8f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Noa &amp; Yariv — עברית · français</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Heebo:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/games/phrase.css">
+<link rel="stylesheet" href="assets/games/describe.css">
+<link rel="stylesheet" href="assets/games/pingpong.css">
+<link rel="stylesheet" href="assets/games/tabou.css">
+<link rel="stylesheet" href="assets/games/headsup.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+</head>
+<body>
+
+<div id="boot" class="boot">
+  <div class="boot-emoji">🎲</div>
+  <div class="boot-text">Loading the deck…</div>
+</div>
+
+<header id="topbar" class="topbar" hidden>
+  <button id="backBtn" class="icon-btn" aria-label="Back">←</button>
+  <div class="topbar-mid">
+    <span id="topTitle" class="top-title"></span>
+    <span id="topSub" class="top-sub"></span>
+  </div>
+  <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
+</header>
+
+<main id="screen" class="screen" hidden></main>
+
+<div id="toasts" class="toasts" aria-live="polite"></div>
+
+<script src="assets/util.js"></script>
+<script src="assets/audio.js"></script>
+<script src="assets/speech.js"></script>
+<script src="assets/store.js"></script>
+<script src="assets/games/duel.js"></script>
+<script src="assets/games/phrase.js"></script>
+<script src="assets/games/describe.js"></script>
+<script src="assets/games/pingpong.js"></script>
+<script src="assets/games/tabou.js"></script>
+<script src="assets/games/headsup.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>

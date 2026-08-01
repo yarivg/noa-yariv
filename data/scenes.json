@@ -1,0 +1,422 @@
+{
+  "scenes": [
+    {
+      "id": "sc01",
+      "title": "At the beach",
+      "emoji": ["🏖️", "☀️", "🌊", "🍉", "🩴", "⛱️"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "ים", "t": "yam", "en": "sea" },
+          { "w": "שמש", "t": "shemesh", "en": "sun" },
+          { "w": "חול", "t": "chol", "en": "sand" },
+          { "w": "אבטיח", "t": "avatiach", "en": "watermelon" },
+          { "w": "כפכפים", "t": "kafkafim", "en": "flip-flops" },
+          { "w": "שמשייה", "t": "shimshiya", "en": "parasol" },
+          { "w": "חם", "t": "cham", "en": "hot" }
+        ],
+        "fr": [
+          { "w": "la mer", "en": "sea" },
+          { "w": "le soleil", "en": "sun" },
+          { "w": "le sable", "en": "sand" },
+          { "w": "la pastèque", "en": "watermelon" },
+          { "w": "les tongs", "en": "flip-flops" },
+          { "w": "le parasol", "en": "parasol" },
+          { "w": "chaud", "en": "hot" }
+        ]
+      }
+    },
+    {
+      "id": "sc02",
+      "title": "Breakfast in the kitchen",
+      "emoji": ["☕", "🍞", "🥚", "🧀", "🥛", "🍽️"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "קפה", "t": "kafe", "en": "coffee" },
+          { "w": "לחם", "t": "lechem", "en": "bread" },
+          { "w": "ביצה", "t": "beitsa", "en": "egg" },
+          { "w": "גבינה", "t": "gvina", "en": "cheese" },
+          { "w": "חלב", "t": "chalav", "en": "milk" },
+          { "w": "שולחן", "t": "shulchan", "en": "table" },
+          { "w": "בוקר", "t": "boker", "en": "morning" }
+        ],
+        "fr": [
+          { "w": "le café", "en": "coffee" },
+          { "w": "le pain", "en": "bread" },
+          { "w": "l'œuf", "en": "egg" },
+          { "w": "le fromage", "en": "cheese" },
+          { "w": "le lait", "en": "milk" },
+          { "w": "la table", "en": "table" },
+          { "w": "le matin", "en": "morning" }
+        ]
+      }
+    },
+    {
+      "id": "sc03",
+      "title": "A rainy street",
+      "emoji": ["🌧️", "☂️", "🚶", "🏙️", "🥶"],
+      "level": 2,
+      "targets": {
+        "he": [
+          { "w": "גשם", "t": "geshem", "en": "rain" },
+          { "w": "מטרייה", "t": "mitriya", "en": "umbrella" },
+          { "w": "רחוב", "t": "rechov", "en": "street" },
+          { "w": "שלולית", "t": "shlulit", "en": "puddle" },
+          { "w": "מעיל", "t": "me'il", "en": "coat" },
+          { "w": "רטוב", "t": "ratov", "en": "wet" },
+          { "w": "קר", "t": "kar", "en": "cold" }
+        ],
+        "fr": [
+          { "w": "la pluie", "en": "rain" },
+          { "w": "le parapluie", "en": "umbrella" },
+          { "w": "la rue", "en": "street" },
+          { "w": "la flaque", "en": "puddle" },
+          { "w": "le manteau", "en": "coat" },
+          { "w": "mouillé", "en": "wet" },
+          { "w": "froid", "en": "cold" }
+        ]
+      }
+    },
+    {
+      "id": "sc04",
+      "title": "At the shuk",
+      "emoji": ["🍅", "🥒", "🍇", "🌶️", "💰", "🏷️"],
+      "level": 2,
+      "targets": {
+        "he": [
+          { "w": "שוק", "t": "shuk", "en": "market" },
+          { "w": "ירקות", "t": "yerakot", "en": "vegetables" },
+          { "w": "פירות", "t": "perot", "en": "fruit" },
+          { "w": "תבלינים", "t": "tavlinim", "en": "spices" },
+          { "w": "מחיר", "t": "mechir", "en": "price" },
+          { "w": "כסף", "t": "kesef", "en": "money" },
+          { "w": "צפוף", "t": "tsafuf", "en": "crowded" }
+        ],
+        "fr": [
+          { "w": "le marché", "en": "market" },
+          { "w": "les légumes", "en": "vegetables" },
+          { "w": "les fruits", "en": "fruit" },
+          { "w": "les épices", "en": "spices" },
+          { "w": "le prix", "en": "price" },
+          { "w": "l'argent", "en": "money" },
+          { "w": "bondé", "en": "crowded" }
+        ]
+      }
+    },
+    {
+      "id": "sc05",
+      "title": "At the airport",
+      "emoji": ["✈️", "🧳", "🛂", "🎫", "🕐"],
+      "level": 2,
+      "targets": {
+        "he": [
+          { "w": "שדה תעופה", "t": "sde te'ufa", "en": "airport" },
+          { "w": "מטוס", "t": "matos", "en": "airplane" },
+          { "w": "מזוודה", "t": "mizvada", "en": "suitcase" },
+          { "w": "דרכון", "t": "darkon", "en": "passport" },
+          { "w": "כרטיס", "t": "kartis", "en": "ticket" },
+          { "w": "טיסה", "t": "tisa", "en": "flight" },
+          { "w": "לחכות", "t": "lechakot", "en": "to wait" }
+        ],
+        "fr": [
+          { "w": "l'aéroport", "en": "airport" },
+          { "w": "l'avion", "en": "airplane" },
+          { "w": "la valise", "en": "suitcase" },
+          { "w": "le passeport", "en": "passport" },
+          { "w": "le billet", "en": "ticket" },
+          { "w": "le vol", "en": "flight" },
+          { "w": "attendre", "en": "to wait" }
+        ]
+      }
+    },
+    {
+      "id": "sc06",
+      "title": "The living room with the cat",
+      "emoji": ["🐈", "🛋️", "📺", "🪟", "🪴"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "חתול", "t": "chatul", "en": "cat" },
+          { "w": "ספה", "t": "sapa", "en": "sofa" },
+          { "w": "טלוויזיה", "t": "televizya", "en": "television" },
+          { "w": "חלון", "t": "chalon", "en": "window" },
+          { "w": "צמח", "t": "tsemach", "en": "plant" },
+          { "w": "לישון", "t": "lishon", "en": "to sleep" }
+        ],
+        "fr": [
+          { "w": "le chat", "en": "cat" },
+          { "w": "le canapé", "en": "sofa" },
+          { "w": "la télévision", "en": "television" },
+          { "w": "la fenêtre", "en": "window" },
+          { "w": "la plante", "en": "plant" },
+          { "w": "dormir", "en": "to sleep" }
+        ]
+      }
+    },
+    {
+      "id": "sc07",
+      "title": "A birthday party",
+      "emoji": ["🎂", "🕯️", "🎁", "🎈", "👫"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "יום הולדת", "t": "yom huledet", "en": "birthday" },
+          { "w": "עוגה", "t": "uga", "en": "cake" },
+          { "w": "נרות", "t": "nerot", "en": "candles" },
+          { "w": "מתנה", "t": "matana", "en": "gift" },
+          { "w": "בלונים", "t": "balonim", "en": "balloons" },
+          { "w": "חברים", "t": "chaverim", "en": "friends" },
+          { "w": "שמח", "t": "sameach", "en": "happy" }
+        ],
+        "fr": [
+          { "w": "l'anniversaire", "en": "birthday" },
+          { "w": "le gâteau", "en": "cake" },
+          { "w": "les bougies", "en": "candles" },
+          { "w": "le cadeau", "en": "gift" },
+          { "w": "les ballons", "en": "balloons" },
+          { "w": "les amis", "en": "friends" },
+          { "w": "content", "en": "happy" }
+        ]
+      }
+    },
+    {
+      "id": "sc08",
+      "title": "The doctor's waiting room",
+      "emoji": ["🩺", "🪑", "🤒", "💊", "⏳", "👩‍⚕️"],
+      "level": 3,
+      "targets": {
+        "he": [
+          { "w": "רופא", "t": "rofe", "en": "doctor" },
+          { "w": "חדר המתנה", "t": "cheder hamtana", "en": "waiting room" },
+          { "w": "אחות", "t": "achot", "en": "nurse" },
+          { "w": "תור", "t": "tor", "en": "appointment" },
+          { "w": "כאב", "t": "ke'ev", "en": "pain" },
+          { "w": "חום", "t": "chom", "en": "fever" },
+          { "w": "חולה", "t": "chole", "en": "sick" },
+          { "w": "מרשם", "t": "mirsham", "en": "prescription" }
+        ],
+        "fr": [
+          { "w": "le médecin", "en": "doctor" },
+          { "w": "la salle d'attente", "en": "waiting room" },
+          { "w": "l'infirmière", "en": "nurse" },
+          { "w": "le rendez-vous", "en": "appointment" },
+          { "w": "la douleur", "en": "pain" },
+          { "w": "la fièvre", "en": "fever" },
+          { "w": "malade", "en": "sick" },
+          { "w": "l'ordonnance", "en": "prescription" }
+        ]
+      }
+    },
+    {
+      "id": "sc09",
+      "title": "On the bus",
+      "emoji": ["🚌", "🚏", "🎫", "💺", "🧍"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "אוטובוס", "t": "otobus", "en": "bus" },
+          { "w": "נהג", "t": "nahag", "en": "driver" },
+          { "w": "תחנה", "t": "tachana", "en": "bus stop" },
+          { "w": "מושב", "t": "moshav", "en": "seat" },
+          { "w": "כרטיס", "t": "kartis", "en": "ticket" },
+          { "w": "אנשים", "t": "anashim", "en": "people" }
+        ],
+        "fr": [
+          { "w": "le bus", "en": "bus" },
+          { "w": "le chauffeur", "en": "driver" },
+          { "w": "l'arrêt", "en": "bus stop" },
+          { "w": "le siège", "en": "seat" },
+          { "w": "le ticket", "en": "ticket" },
+          { "w": "les gens", "en": "people" }
+        ]
+      }
+    },
+    {
+      "id": "sc10",
+      "title": "A picnic",
+      "emoji": ["🧺", "🌳", "🥪", "🍷", "🐜", "🌿"],
+      "level": 2,
+      "targets": {
+        "he": [
+          { "w": "דשא", "t": "deshe", "en": "grass" },
+          { "w": "עץ", "t": "ets", "en": "tree" },
+          { "w": "שמיכה", "t": "smicha", "en": "blanket" },
+          { "w": "סל", "t": "sal", "en": "basket" },
+          { "w": "כריך", "t": "karich", "en": "sandwich" },
+          { "w": "יין", "t": "yayin", "en": "wine" },
+          { "w": "נמלים", "t": "nemalim", "en": "ants" }
+        ],
+        "fr": [
+          { "w": "l'herbe", "en": "grass" },
+          { "w": "l'arbre", "en": "tree" },
+          { "w": "la couverture", "en": "blanket" },
+          { "w": "le panier", "en": "basket" },
+          { "w": "le sandwich", "en": "sandwich" },
+          { "w": "le vin", "en": "wine" },
+          { "w": "les fourmis", "en": "ants" }
+        ]
+      }
+    },
+    {
+      "id": "sc11",
+      "title": "The bedroom at night",
+      "emoji": ["🛏️", "🌙", "💡", "📖", "😴"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "מיטה", "t": "mita", "en": "bed" },
+          { "w": "כרית", "t": "karit", "en": "pillow" },
+          { "w": "ירח", "t": "yare'ach", "en": "moon" },
+          { "w": "מנורה", "t": "menora", "en": "lamp" },
+          { "w": "ספר", "t": "sefer", "en": "book" },
+          { "w": "לילה", "t": "layla", "en": "night" },
+          { "w": "לישון", "t": "lishon", "en": "to sleep" }
+        ],
+        "fr": [
+          { "w": "le lit", "en": "bed" },
+          { "w": "l'oreiller", "en": "pillow" },
+          { "w": "la lune", "en": "moon" },
+          { "w": "la lampe", "en": "lamp" },
+          { "w": "le livre", "en": "book" },
+          { "w": "la nuit", "en": "night" },
+          { "w": "dormir", "en": "to sleep" }
+        ]
+      }
+    },
+    {
+      "id": "sc12",
+      "title": "The supermarket queue",
+      "emoji": ["🛒", "🧾", "💳", "🛍️", "🧍"],
+      "level": 2,
+      "targets": {
+        "he": [
+          { "w": "סופרמרקט", "t": "supermarket", "en": "supermarket" },
+          { "w": "תור", "t": "tor", "en": "queue" },
+          { "w": "עגלה", "t": "agala", "en": "trolley" },
+          { "w": "קופאית", "t": "kupa'it", "en": "cashier" },
+          { "w": "שקית", "t": "sakit", "en": "bag" },
+          { "w": "כרטיס אשראי", "t": "kartis ashrai", "en": "credit card" },
+          { "w": "לשלם", "t": "leshalem", "en": "to pay" }
+        ],
+        "fr": [
+          { "w": "le supermarché", "en": "supermarket" },
+          { "w": "la queue", "en": "queue" },
+          { "w": "le chariot", "en": "trolley" },
+          { "w": "la caissière", "en": "cashier" },
+          { "w": "le sac", "en": "bag" },
+          { "w": "la carte bancaire", "en": "credit card" },
+          { "w": "payer", "en": "to pay" }
+        ]
+      }
+    },
+    {
+      "id": "sc13",
+      "title": "A park with dogs",
+      "emoji": ["🐕", "🌳", "🎾", "🪑", "🏃", "👧"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "כלב", "t": "kelev", "en": "dog" },
+          { "w": "פארק", "t": "park", "en": "park" },
+          { "w": "כדור", "t": "kadur", "en": "ball" },
+          { "w": "ספסל", "t": "safsal", "en": "bench" },
+          { "w": "עץ", "t": "ets", "en": "tree" },
+          { "w": "ילדים", "t": "yeladim", "en": "children" },
+          { "w": "לרוץ", "t": "laruts", "en": "to run" }
+        ],
+        "fr": [
+          { "w": "le chien", "en": "dog" },
+          { "w": "le parc", "en": "park" },
+          { "w": "la balle", "en": "ball" },
+          { "w": "le banc", "en": "bench" },
+          { "w": "l'arbre", "en": "tree" },
+          { "w": "les enfants", "en": "children" },
+          { "w": "courir", "en": "to run" }
+        ]
+      }
+    },
+    {
+      "id": "sc14",
+      "title": "At the cafe",
+      "emoji": ["☕", "🥐", "📰", "🪑", "🥤"],
+      "level": 1,
+      "targets": {
+        "he": [
+          { "w": "קפה", "t": "kafe", "en": "coffee" },
+          { "w": "קרואסון", "t": "kruason", "en": "croissant" },
+          { "w": "מלצר", "t": "meltsar", "en": "waiter" },
+          { "w": "שולחן", "t": "shulchan", "en": "table" },
+          { "w": "עיתון", "t": "iton", "en": "newspaper" },
+          { "w": "כוס", "t": "kos", "en": "glass" },
+          { "w": "לשתות", "t": "lishtot", "en": "to drink" }
+        ],
+        "fr": [
+          { "w": "le café", "en": "coffee" },
+          { "w": "le croissant", "en": "croissant" },
+          { "w": "le serveur", "en": "waiter" },
+          { "w": "la table", "en": "table" },
+          { "w": "le journal", "en": "newspaper" },
+          { "w": "le verre", "en": "glass" },
+          { "w": "boire", "en": "to drink" }
+        ]
+      }
+    },
+    {
+      "id": "sc15",
+      "title": "A wedding",
+      "emoji": ["💒", "👰", "🤵", "💍", "💐", "💃"],
+      "level": 3,
+      "targets": {
+        "he": [
+          { "w": "חתונה", "t": "chatuna", "en": "wedding" },
+          { "w": "כלה", "t": "kala", "en": "bride" },
+          { "w": "חתן", "t": "chatan", "en": "groom" },
+          { "w": "שמלה", "t": "simla", "en": "dress" },
+          { "w": "טבעת", "t": "taba'at", "en": "ring" },
+          { "w": "פרחים", "t": "prachim", "en": "flowers" },
+          { "w": "אורחים", "t": "orchim", "en": "guests" },
+          { "w": "לרקוד", "t": "lirkod", "en": "to dance" }
+        ],
+        "fr": [
+          { "w": "le mariage", "en": "wedding" },
+          { "w": "la mariée", "en": "bride" },
+          { "w": "le marié", "en": "groom" },
+          { "w": "la robe", "en": "dress" },
+          { "w": "la bague", "en": "ring" },
+          { "w": "les fleurs", "en": "flowers" },
+          { "w": "les invités", "en": "guests" },
+          { "w": "danser", "en": "to dance" }
+        ]
+      }
+    },
+    {
+      "id": "sc16",
+      "title": "A snowy street in Paris",
+      "emoji": ["🌨️", "🗼", "🧣", "🥖", "🌉", "🧤"],
+      "level": 3,
+      "targets": {
+        "he": [
+          { "w": "שלג", "t": "sheleg", "en": "snow" },
+          { "w": "קר", "t": "kar", "en": "cold" },
+          { "w": "צעיף", "t": "tsa'if", "en": "scarf" },
+          { "w": "כפפות", "t": "kfafot", "en": "gloves" },
+          { "w": "מגדל", "t": "migdal", "en": "tower" },
+          { "w": "מאפייה", "t": "ma'afiya", "en": "bakery" },
+          { "w": "גשר", "t": "gesher", "en": "bridge" },
+          { "w": "פנס רחוב", "t": "panas rechov", "en": "street lamp" }
+        ],
+        "fr": [
+          { "w": "la neige", "en": "snow" },
+          { "w": "froid", "en": "cold" },
+          { "w": "l'écharpe", "en": "scarf" },
+          { "w": "les gants", "en": "gloves" },
+          { "w": "la tour", "en": "tower" },
+          { "w": "la boulangerie", "en": "bakery" },
+          { "w": "le pont", "en": "bridge" },
+          { "w": "le lampadaire", "en": "street lamp" }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,272 @@
+/* ============================================================
+   tabou.css - Taboo only. Every selector is scoped under
+   .tabou-game, which the module adds to its own root, so nothing
+   here can leak into another game.
+
+   The look has one job: the describer glances down for half a
+   second between sentences, so the word must be enormous and the
+   forbidden list must read as DANGER without being read at all.
+   ============================================================ */
+
+.tabou-game .tb-who-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 14px 0 18px;
+}
+
+.tabou-game .tb-who {
+  flex: 1 1 0;
+  min-width: 0;
+  background: var(--card);
+  border-radius: var(--r);
+  box-shadow: var(--shadow);
+  padding: 12px 8px;
+  text-align: center;
+}
+
+.tabou-game .tb-who small {
+  display: block;
+  margin-top: 4px;
+  opacity: .7;
+  line-height: 1.3;
+}
+
+.tabou-game .tb-who-emoji { font-size: 30px; line-height: 1; }
+.tabou-game .tb-who-name { font-weight: 700; margin-top: 4px; }
+
+/* ---------------------------------------------------------- handover */
+
+.tabou-game .tb-hand,
+.tabou-game .tb-halftime {
+  text-align: center;
+  padding: 22px 18px 20px;
+}
+
+.tabou-game .tb-hand-half {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .65;
+  margin-bottom: 10px;
+}
+
+.tabou-game .tb-hand-emoji {
+  font-size: 64px;
+  line-height: 1;
+  animation: tb-nudge 1.6s ease-in-out infinite;
+}
+
+@keyframes tb-nudge {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-8px) rotate(3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tabou-game .tb-hand-emoji { animation: none; }
+}
+
+.tabou-game .tb-hand-name { margin: 8px 0 6px; font-size: 26px; }
+.tabou-game .tb-hand-lead { margin: 0 auto 14px; max-width: 30ch; line-height: 1.45; }
+
+/* The one instruction that ruins the game if it is missed. */
+.tabou-game .tb-hand-warn {
+  background: #fff0d6;
+  color: #8a5a00;
+  border: 2px dashed var(--orange);
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.tabou-game .tb-ht-score {
+  font-size: 52px;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--purple);
+  margin: 6px 0 14px;
+}
+
+.tabou-game .tb-ht-score small {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  opacity: .6;
+  margin-top: 4px;
+}
+
+.tabou-game .tb-ht-line {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: rgba(124, 92, 255, .08);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 14px;
+}
+
+.tabou-game .tb-ht-line small { opacity: .65; }
+
+/* ---------------------------------------------------------- turn strip */
+
+.tabou-game .tb-turn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 8px 0 4px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  background: rgba(43, 36, 64, .06);
+}
+
+.tabou-game .tb-turn-emoji { font-size: 20px; }
+.tabou-game .tb-turn-flag { font-size: 18px; }
+
+/* ---------------------------------------------------------- the card */
+
+.tabou-game .tb-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 14px 14px;
+  text-align: center;
+}
+
+.tabou-game .tb-card .card-word {
+  font-size: clamp(30px, 10vw, 46px);
+  line-height: 1.1;
+  /* Long French articles must wrap rather than push the card wide. */
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
+
+/* The forbidden block: red hatching, so it reads as "stop" at a glance. */
+.tabou-game .tb-forbidden {
+  width: 100%;
+  border: 3px solid var(--red);
+  border-radius: 16px;
+  padding: 10px 10px 12px;
+  background-color: #fff3f4;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 71, 87, .13) 0 8px,
+    transparent 8px 18px
+  );
+}
+
+.tabou-game .tb-forbidden-title {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+
+.tabou-game .tb-bans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.tabou-game .tb-ban {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  min-width: 0;
+  background: var(--card);
+  border-radius: 11px;
+  padding: 8px 6px;
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.2;
+  box-shadow: 0 1px 0 rgba(255, 71, 87, .25);
+}
+
+.tabou-game .tb-ban-w {
+  overflow-wrap: anywhere;
+  text-decoration: line-through;
+  text-decoration-color: rgba(255, 71, 87, .55);
+  text-decoration-thickness: 2px;
+}
+
+.tabou-game .tb-ban-x { flex: none; font-size: 13px; }
+
+/* Hebrew bans read right to left; the flex row has to flip with them. */
+.tabou-game .tb-bans.rtl .tb-ban { flex-direction: row-reverse; }
+
+.tabou-game .tb-speaking {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: .75;
+}
+
+/* ---------------------------------------------------------- buttons */
+
+.tabou-game .tb-action {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tabou-game .tb-main-btns {
+  display: flex;
+  gap: 14px;
+}
+
+.tabou-game .tb-main-btns .big-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.tabou-game .tb-main-btns .big-btn small {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: .8;
+}
+
+/* Got it is the button they hit twenty times a round, so it is the
+   fat one on the right where the thumb already rests. */
+.tabou-game .tb-got { flex: 1.35 1 0 !important; }
+
+.tabou-game .tb-pass { background: var(--yellow); color: var(--ink); }
+.tabou-game .tb-pass.is-spent { opacity: .45; }
+
+/* The honesty button. Small enough that nobody hits it by accident,
+   present enough that the ban is not decorative. */
+.tabou-game .tb-slip {
+  align-self: center;
+  min-height: 44px;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--red);
+  border: 2px dashed rgba(255, 71, 87, .55);
+  border-radius: 999px;
+  padding: 0 16px;
+}
+
+.tabou-game .tb-slip:active { background: #ffe9eb; }
+
+/* Narrow phones: the two big buttons stay side by side but shed
+   their subtitles rather than shrinking the tap target. */
+@media (max-width: 340px) {
+  .tabou-game .tb-main-btns .big-btn { font-size: 16px; }
+  .tabou-game .tb-ban { font-size: 15px; }
+}
