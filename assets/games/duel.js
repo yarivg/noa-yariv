@@ -24,7 +24,7 @@ window.Games.duel = (function () {
   function mount(root, ctx) {
     var me = ctx.player;
     var from = me.native, to = me.target;   // prompt language, answer language
-    var deck = U.shuffle(ctx.data.words);
+    var deck = U.shuffle(Store.levelled(ctx.data.words));
     var i = 0;
 
     var state = {

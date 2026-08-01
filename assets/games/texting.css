@@ -1,0 +1,422 @@
+/* ============================================================
+   texting.css: Texting.
+
+   Everything is scoped under .texting-game, which texting.js adds to
+   its own root. The shared furniture (.intro, .rules, .big-btn,
+   .listening, .timebar, .hud-score, .panel) is styled globally and
+   only nudged here, never redefined.
+
+   The one job of this file is the illusion: a messaging app that
+   grew out of a children's toy. So it keeps the site's fat corners
+   and solid shadows, and spends its detail budget on the three
+   things your eye actually uses to read a chat: which side the
+   bubble is on, which corner lost its radius, and the ticks.
+   ============================================================ */
+
+.texting-game .tx-phone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--card);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ---------------------------------------------------------- header */
+
+.texting-game .tx-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(120deg, #fff, #f6f1ff);
+  border-bottom: 2px solid var(--line);
+}
+
+.texting-game .tx-avatar {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--me, var(--purple));
+}
+
+.texting-game .tx-who { flex: 1; min-width: 0; }
+
+.texting-game .tx-name {
+  font-weight: 700;
+  font-size: 17px;
+  line-height: 1.1;
+}
+
+.texting-game .tx-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.texting-game .tx-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 0 0 rgba(46, 204, 113, .55);
+  animation: tx-alive 2.2s ease-out infinite;
+}
+
+.texting-game .tx-status.is-typing { color: var(--purple); font-weight: 600; }
+.texting-game .tx-status.is-typing .tx-dot { background: var(--purple); }
+
+@keyframes tx-alive {
+  70%  { box-shadow: 0 0 0 9px rgba(46, 204, 113, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+}
+
+.texting-game .tx-tally { flex: none; text-align: right; }
+.texting-game .tx-points { font-size: 20px; line-height: 1; }
+.texting-game .tx-streak { height: 14px; font-size: 11px; text-align: right; }
+
+/* ---------------------------------------------------------- thread */
+
+.texting-game .tx-thread {
+  height: 48vh;
+  min-height: 290px;
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  padding: 14px 12px 6px;
+  /* A chat wallpaper made of nothing: two very quiet blobs, so the
+     white bubbles have something to sit on top of. */
+  background:
+    radial-gradient(circle at 15% 0%, rgba(124, 92, 255, .07), transparent 45%),
+    radial-gradient(circle at 88% 65%, rgba(46, 197, 255, .08), transparent 42%),
+    #fdfaff;
+}
+
+.texting-game .tx-msg {
+  position: relative;
+  max-width: 84%;
+  margin-bottom: 12px;
+  clear: both;
+}
+
+.texting-game .tx-msg.in  { margin-right: auto; }
+.texting-game .tx-msg.out { margin-left: auto; }
+
+.texting-game .tx-bubble {
+  padding: 10px 14px;
+  font-size: 17px;
+  line-height: 1.3;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  border-radius: 20px;
+}
+
+/* The missing corner is the tail. It reads as "received" or "sent"
+   faster than any colour does. */
+.texting-game .in .tx-bubble {
+  border-bottom-left-radius: 6px;
+  background: #fff;
+  border: 2px solid var(--line);
+  box-shadow: 0 3px 0 rgba(43, 36, 64, .07);
+}
+
+.texting-game .out .tx-bubble {
+  border-bottom-right-radius: 6px;
+  background: var(--purple);
+  color: #fff;
+  box-shadow: 0 3px 0 #5b3ee0;
+}
+
+.texting-game .tx-msg.tx-near .tx-bubble { background: var(--orange); box-shadow: 0 3px 0 #d97c1e; }
+.texting-game .tx-msg.tx-bad .tx-bubble  { background: var(--red);    box-shadow: 0 3px 0 #cf3644; }
+
+.texting-game .tx-translit {
+  margin: 3px 4px 0;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.texting-game .tx-meta {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 3px 6px 0;
+  font-size: 10.5px;
+  color: var(--ink-soft);
+}
+
+.texting-game .out .tx-meta { justify-content: flex-end; }
+
+.texting-game .tx-ticks { font-weight: 700; letter-spacing: -1px; }
+.texting-game .tx-ticks.read { color: var(--blue); letter-spacing: -2px; }
+.texting-game .tx-ticks.one  { color: var(--ink-soft); }
+.texting-game .tx-ticks.fail { color: var(--red); letter-spacing: 0; }
+
+/* The bubble flying out of the composer. Everything the player sends
+   uses it, typed or spoken, because the send is the reward. */
+.texting-game .tx-land { animation: tx-send .3s cubic-bezier(.2, .9, .3, 1.35); }
+
+@keyframes tx-send {
+  from { transform: translate(18px, 22px) scale(.82); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+.texting-game .tx-msg.in { animation: tx-drop .28s cubic-bezier(.2, .9, .3, 1.3); }
+
+@keyframes tx-drop {
+  from { transform: translateY(-10px) scale(.9); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+
+/* ---------------------------------------------------------- typing + ghost */
+
+.texting-game .tx-typing .tx-bubble {
+  display: inline-flex;
+  gap: 5px;
+  padding: 14px 16px;
+}
+
+.texting-game .tx-typing i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  opacity: .4;
+  animation: tx-dots 1.1s ease-in-out infinite;
+}
+
+.texting-game .tx-typing i:nth-child(2) { animation-delay: .16s; }
+.texting-game .tx-typing i:nth-child(3) { animation-delay: .32s; }
+
+@keyframes tx-dots {
+  0%, 60%, 100% { transform: translateY(0); opacity: .35; }
+  30%           { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Your own voice, mid-sentence: there, but not sent yet. */
+.texting-game .tx-ghost .tx-bubble {
+  background: rgba(124, 92, 255, .22);
+  color: var(--ink);
+  border: 2px dashed rgba(124, 92, 255, .55);
+  box-shadow: none;
+  animation: tx-breathe 1.5s ease-in-out infinite;
+}
+
+@keyframes tx-breathe {
+  50% { background: rgba(124, 92, 255, .32); }
+}
+
+/* ---------------------------------------------------------- system rows */
+
+.texting-game .tx-divider {
+  clear: both;
+  margin: 6px 0 14px;
+  text-align: center;
+}
+
+.texting-game .tx-divider span {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 99px;
+  background: rgba(43, 36, 64, .07);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.texting-game .tx-late span { background: rgba(255, 71, 87, .14); color: var(--red); }
+
+.texting-game .tx-reveal {
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  margin: 0 0 14px;
+  padding: 10px 14px;
+  border-radius: 16px;
+  background: #fff6f7;
+  border: 2px solid var(--red);
+  text-align: center;
+}
+
+.texting-game .tx-reveal small {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--ink-soft);
+}
+
+.texting-game .tx-reveal span { font-size: 22px; font-weight: 700; }
+
+.texting-game .tx-fix {
+  margin: 5px 6px 0;
+  padding: 7px 11px;
+  border-radius: 13px;
+  background: #fff8ee;
+  border: 2px solid rgba(255, 159, 67, .5);
+  text-align: right;
+}
+
+.texting-game .tx-fix small {
+  display: block;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--orange);
+}
+
+.texting-game .tx-fix span { font-size: 16px; font-weight: 700; }
+.texting-game .tx-fix-t { text-transform: none !important; letter-spacing: 0 !important; font-style: italic; color: var(--ink-soft) !important; }
+
+.texting-game .tx-pop {
+  position: absolute;
+  right: 14px;
+  bottom: 96px;
+  padding: 7px 14px;
+  border-radius: 99px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  pointer-events: none;
+  box-shadow: 0 4px 0 #22a25a;
+  animation: tx-float 1.1s ease forwards;
+}
+
+@keyframes tx-float {
+  0%   { transform: translateY(10px) scale(.7); opacity: 0; }
+  25%  { transform: translateY(0) scale(1.1); opacity: 1; }
+  100% { transform: translateY(-34px) scale(1); opacity: 0; }
+}
+
+/* ---------------------------------------------------------- composer */
+
+.texting-game .tx-composer {
+  position: relative;
+  padding: 10px;
+  background: #fff;
+  border-top: 2px solid var(--line);
+}
+
+/* The clock, as thin as it can be and still be seen: a chat has no
+   countdown timer, so this is the only one it gets. */
+.texting-game .tx-timebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 0;
+  background: transparent;
+}
+
+.texting-game .tx-composer.hot { background: #fff5f6; }
+.texting-game .tx-composer.hot .tx-timebar > i { background: var(--red); }
+
+.texting-game .tx-pad { min-height: 60px; display: flex; align-items: center; }
+
+.texting-game .tx-wait {
+  flex: 1;
+  padding: 0 8px;
+  font-size: 14px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.texting-game .tx-mic-row,
+.texting-game .tx-type-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.texting-game .tx-fakefield {
+  flex: 1;
+  min-width: 0;
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 18px;
+  border-radius: 99px;
+  background: #f4f0fa;
+  color: var(--ink-soft);
+  font-size: 15px;
+}
+
+.texting-game .tx-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 56px;
+  padding: 0 18px;
+  border: 2px solid var(--line);
+  border-radius: 99px;
+  background: #f9f6fd;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 17px;
+  outline: none;
+}
+
+.texting-game .tx-input:focus { border-color: var(--purple); background: #fff; }
+.texting-game .tx-input.rtl { text-align: right; }
+
+.texting-game .tx-mic,
+.texting-game .tx-send {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  border: none;
+  border-radius: 50%;
+  background: var(--purple);
+  color: #fff;
+  font-size: 24px;
+  line-height: 1;
+  box-shadow: 0 4px 0 #5b3ee0;
+  transition: transform .1s, box-shadow .1s;
+}
+
+.texting-game .tx-mic:active,
+.texting-game .tx-send:active { transform: translateY(4px); box-shadow: 0 0 0 #5b3ee0; }
+
+.texting-game .tx-send { background: var(--green); box-shadow: 0 4px 0 #22a25a; font-size: 21px; }
+.texting-game .tx-send:active { box-shadow: 0 0 0 #22a25a; }
+
+/* The shared listening strip, squeezed into the height of a composer. */
+.texting-game .tx-listening {
+  width: 100%;
+  min-height: 56px;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 99px;
+  box-shadow: none;
+}
+
+.texting-game .tx-listening .mic-dot { width: 40px; height: 40px; font-size: 20px; }
+.texting-game .tx-listening .mic-copy b { font-size: 14px; }
+.texting-game .tx-listening .heard { font-size: 12px; }
+.texting-game .tx-listening .mic-bar { display: none; }
+
+/* ---------------------------------------------------------- no content */
+
+.texting-game .tx-empty { text-align: center; }
+.texting-game .tx-empty p { color: var(--ink-soft); font-size: 15px; }
+.texting-game .tx-empty .big-btn { width: 100%; margin-top: 8px; }
+
+/* ---------------------------------------------------------- responsive */
+
+@media (min-width: 560px) {
+  .texting-game .tx-thread { height: 52vh; }
+  .texting-game .tx-msg { max-width: 74%; }
+}

@@ -1,6 +1,6 @@
 # Noa &amp; Yariv
 
-Six language games for exactly two people.
+Seven language games for exactly two people.
 
 Noa is French, lives in Israel, and is learning Hebrew. Yariv is Israeli, native
 Hebrew, and is learning French. Both speak good English, so English is the
@@ -19,13 +19,32 @@ play. Scores live in that browser and nowhere else.
 |---|---|---|
 | ⚡ | **Speed Duel** | Solo. Sixty seconds of cards. A word in the language you already speak, said out loud in the one you are learning. Every right answer buys two more seconds, so a good run lasts longer than a bad one, and three in a row doubles everything after it. |
 | 🧩 | **Phrase Race** | Solo. Whole sentences, not single words. Alternates between tapping scrambled word tiles into the right order and saying the sentence into the microphone. Twenty seconds each. |
+| 💬 | **Texting** | Solo. A chat thread with the other one. A message lands in the language you speak, and you have twelve seconds to fire the same line back in the language you are learning. Your own voice renders as the outgoing bubble, and lands with two blue ticks if you nailed it. Miss, and you left them on read. |
 | 🖼️ | **Describe It** | Solo. A picture built from emoji, and forty-five seconds to talk about it out loud. The words we are listening for sit face down underneath and flip up as you say them. Clear the board before the buzzer for a time bonus. |
 | 🏓 | **Ping-Pong** | Together, one phone. Turns alternate behind a handover card, and the pair share three lives and one chain counter. Noa gets a French word and says the Hebrew; Yariv gets a Hebrew word and says the French. The clock shrinks every turn, from ten seconds down to four. Runs until the lives are gone, or until you bank it. |
 | 🚫 | **Taboo** | Together, one phone. The describer speaks the language they are *learning* while their partner, who is native in it, guesses. Four forbidden words per card, including the obvious one. Ninety seconds each way, one shared score. |
 | 🙈 | **On My Forehead** | Together, one phone. Hold it to your forehead; the word is in the language you are learning and your partner describes it without saying it. Tilt down for a hit, up for a pass, or tap if the phone will not give up its motion sensors. |
 
-Three of them you play alone on the bus. Three of them only work with the other
+Four of them you play alone on the bus. Three of them only work with the other
 person in the room.
+
+## Difficulty
+
+One setting on the home screen, four bands, and it is a filter over the
+content's level rather than a change to any game's rules: the same round, harder
+cards.
+
+| | | |
+|---|---|---|
+| 🌱 | Easy | level 1 only, the survival vocabulary |
+| 🙂 | Normal | levels 1 and 2 |
+| 🔥 | Hard | levels 2 and 3, the words you need to argue in |
+| 🎲 | Mix | everything |
+
+It applies to the games built on words, sentences, chat threads and pictures.
+Taboo and On My Forehead carry no level on their cards and quietly ignore it. If
+a band would leave a deck too thin to play, the full deck comes back rather than
+handing you a four card round.
 
 ## Which way round the languages go
 
@@ -77,14 +96,17 @@ ahead, because that is the actual engine of the whole thing.
 
 ## Content
 
-Five JSON files under `data/`, each standing alone. `data/SCHEMA.md` is the
+Six JSON files under `data/`, each standing alone. `data/SCHEMA.md` is the
 contract: what every field means, how Hebrew is transliterated, and the rules for
-adding more. Adding a word is adding a line.
+adding more. Adding a word is adding a line. `tools/check-content.py` validates
+all of it, and it is worth running before a commit: a missing transliteration is
+not a crash, it is a blank line on a card in the middle of a round.
 
 | file | what |
 |---|---|
-| `words.json` | single words, themed and levelled, French gender marked |
-| `sentences.json` | short sentences a couple actually says to each other |
+| `words.json` | 434 words, themed and levelled, French gender marked, including a 45 entry `romance` deck because they are dating |
+| `sentences.json` | 62 short sentences a couple actually says to each other |
+| `chat.json` | 22 texting threads, 150 lines, each thread one continuous exchange |
 | `scenes.json` | emoji pictures with the words we listen for in both languages |
 | `tabou.json` | cards with four forbidden words per language |
 | `headsup.json` | forehead cards, one emoji each, sorted into decks |

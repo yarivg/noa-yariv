@@ -38,7 +38,7 @@ window.Games.pingpong = (function () {
     var yariv = Store.player('yariv');
     var order = [noa, yariv];   // Noa serves first, always
 
-    var words = (ctx.data && ctx.data.words) ? ctx.data.words : [];
+    var words = (ctx.data && ctx.data.words) ? Store.levelled(ctx.data.words) : [];
     var queues = { 1: [], 2: [], 3: [] };
     var source = { 1: byLevel(1), 2: byLevel(2), 3: byLevel(3) };
 

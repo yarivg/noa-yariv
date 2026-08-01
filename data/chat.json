@@ -1,0 +1,241 @@
+{
+  "threads": [
+    { "id": "c01", "title": "On the way home", "emoji": "🚗", "level": 1,
+      "lines": [
+        { "he": "אני בדרך הביתה", "t": "ani baderech habaita", "fr": "je rentre à la maison", "en": "I'm on my way home" },
+        { "he": "אתה רוצה שאקנה משהו", "t": "ata rotse she'ekne mashehu", "fr": "tu veux que j'achète quelque chose ?", "en": "do you want me to buy something?" },
+        { "he": "תביא לחם בבקשה", "t": "tavi lechem bevakasha", "fr": "apporte du pain s'il te plaît", "en": "bring bread please" },
+        { "he": "אין לחם בחנות", "t": "ein lechem bachanut", "fr": "il n'y a pas de pain", "en": "there's no bread at the shop" },
+        { "he": "אז תביא פיתות", "t": "az tavi pitot", "fr": "alors apporte des pitas", "en": "then bring pitas" },
+        { "he": "אני מגיעה בעוד חמש דקות", "t": "ani magi'a be'od chamesh dakot", "fr": "j'arrive dans cinq minutes", "en": "I'll be there in five minutes" }
+      ] },
+
+    { "id": "c02", "title": "At the shuk", "emoji": "🍅", "level": 1,
+      "lines": [
+        { "he": "אני בשוק עכשיו", "t": "ani bashuk achshav", "fr": "je suis au marché", "en": "I'm at the market now" },
+        { "he": "מה צריך לקנות", "t": "ma tsarich liknot", "fr": "qu'est-ce qu'il faut acheter ?", "en": "what do we need to buy?" },
+        { "he": "תקנה עגבניות ומלפפונים", "t": "tikne agvaniyot umelafefonim", "fr": "achète des tomates et des concombres", "en": "buy tomatoes and cucumbers" },
+        { "he": "יש כאן חומוס טרי", "t": "yesh kan chumus tari", "fr": "il y a du houmous frais", "en": "there's fresh hummus here" },
+        { "he": "כמה עולים התפוזים", "t": "kama olim hatapuzim", "fr": "combien coûtent les oranges ?", "en": "how much are the oranges?" },
+        { "he": "עשרה שקלים לקילו", "t": "asara shkalim lekilo", "fr": "dix shekels le kilo", "en": "ten shekels a kilo" },
+        { "he": "אל תשכח פרחים לשבת", "t": "al tishkach prachim leshabat", "fr": "n'oublie pas les fleurs pour shabbat", "en": "don't forget flowers for shabbat" }
+      ] },
+
+    { "id": "c03", "title": "What do you want to eat", "emoji": "🍽️", "level": 1,
+      "lines": [
+        { "he": "מה אתה רוצה לאכול", "t": "ma ata rotse le'echol", "fr": "qu'est-ce que tu veux manger ?", "en": "what do you want to eat?" },
+        { "he": "אני ממש מתה מרעב", "t": "ani mamash meta mera'av", "fr": "je meurs vraiment de faim", "en": "I'm really starving" },
+        { "he": "יש פסטה במקרר", "t": "yesh pasta bamekarer", "fr": "il y a des pâtes au frigo", "en": "there's pasta in the fridge" },
+        { "he": "אני לא רוצה פסטה שוב", "t": "ani lo rotsa pasta shuv", "fr": "je ne veux pas encore des pâtes", "en": "I don't want pasta again" },
+        { "he": "בוא נזמין סושי", "t": "bo nazmin sushi", "fr": "on commande des sushis ?", "en": "let's order sushi" },
+        { "he": "זה יקר מדי היום", "t": "ze yakar midai hayom", "fr": "c'est trop cher aujourd'hui", "en": "that's too expensive today" },
+        { "he": "אני מכינה ביצים", "t": "ani mechina beitsim", "fr": "je prépare des œufs", "en": "I'm making eggs" }
+      ] },
+
+    { "id": "c04", "title": "Good morning, good night", "emoji": "🌙", "level": 1,
+      "lines": [
+        { "he": "בוקר טוב מותק", "t": "boker tov motek", "fr": "bonjour mon amour", "en": "good morning my love" },
+        { "he": "ישנת טוב הלילה", "t": "yashanta tov halaila", "fr": "tu as bien dormi cette nuit ?", "en": "did you sleep well last night?" },
+        { "he": "חלמתי עליך שוב", "t": "chalamti alecha shuv", "fr": "j'ai encore rêvé de toi", "en": "I dreamed about you again" },
+        { "he": "יש קפה בשבילך במטבח", "t": "yesh kafe bishvilcha bamitbach", "fr": "il y a du café pour toi", "en": "there's coffee for you in the kitchen" },
+        { "he": "לילה טוב תישן טוב", "t": "laila tov tishan tov", "fr": "bonne nuit, dors bien", "en": "good night, sleep well" },
+        { "he": "נשיקה לפני השינה", "t": "neshika lifnei hasheina", "fr": "un bisou avant de dormir", "en": "a kiss before sleep" }
+      ] },
+
+    { "id": "c05", "title": "Late for dinner with friends", "emoji": "⏰", "level": 1,
+      "lines": [
+        { "he": "אנחנו מאחרים לארוחת ערב", "t": "anachnu me'acharim la'aruchat erev", "fr": "on est en retard pour le dîner", "en": "we're late for dinner" },
+        { "he": "אני עדיין בעבודה", "t": "ani adain ba'avoda", "fr": "je suis encore au travail", "en": "I'm still at work" },
+        { "he": "כולם כבר במסעדה", "t": "kulam kvar bamis'ada", "fr": "tout le monde est déjà au restaurant", "en": "everyone is already at the restaurant" },
+        { "he": "תגיד להם שנגיע בשמונה וחצי", "t": "tagid lahem shenagia beshmone vachetsi", "fr": "dis-leur qu'on arrive à huit heures et demie", "en": "tell them we'll arrive at eight thirty" },
+        { "he": "אני קופצת הביתה להתקלח", "t": "ani kofetset habaita lehitkale'ach", "fr": "je passe à la maison me doucher", "en": "I'm popping home to shower" },
+        { "he": "אין זמן, בוא ישר", "t": "ein zman bo yashar", "fr": "pas le temps, viens directement", "en": "no time, come straight there" },
+        { "he": "נפגשים שם בעוד רבע שעה", "t": "nifgashim sham be'od reva sha'a", "fr": "on se retrouve là dans quinze minutes", "en": "see you there in fifteen minutes" }
+      ] },
+
+    { "id": "c06", "title": "The cat again", "emoji": "🐱", "level": 1,
+      "lines": [
+        { "he": "החתול שבר את הכוס", "t": "hachatul shavar et hakos", "fr": "le chat a cassé le verre", "en": "the cat broke the glass" },
+        { "he": "יש זכוכית על הרצפה", "t": "yesh zchuchit al haritspa", "fr": "il y a du verre par terre", "en": "there's glass on the floor" },
+        { "he": "הוא בסדר, לא נפצע", "t": "hu beseder lo niftsa", "fr": "il va bien, il n'est pas blessé", "en": "he's fine, he's not hurt" },
+        { "he": "איפה הוא מתחבא עכשיו", "t": "eifo hu mitchabe achshav", "fr": "où est-ce qu'il se cache ?", "en": "where is he hiding now?" },
+        { "he": "מתחת למיטה כרגיל", "t": "mitachat lamita karagil", "fr": "sous le lit, comme d'habitude", "en": "under the bed, as usual" },
+        { "he": "תן לו אוכל, הוא מפוחד", "t": "ten lo ochel hu mefuchad", "fr": "donne-lui à manger, il a peur", "en": "give him food, he's scared" }
+      ] },
+
+    { "id": "c07", "title": "A new Hebrew word", "emoji": "📚", "level": 1,
+      "lines": [
+        { "he": "למדתי מילה חדשה היום", "t": "lamadeti mila chadasha hayom", "fr": "j'ai appris un mot nouveau aujourd'hui", "en": "I learned a new word today" },
+        { "he": "איזו מילה למדת", "t": "eizo mila lamadeta", "fr": "quel mot tu as appris ?", "en": "which word did you learn?" },
+        { "he": "המילה היא חצילים", "t": "hamila hi chatsilim", "fr": "le mot c'est aubergines", "en": "the word is aubergines" },
+        { "he": "אמרת את זה מצוין", "t": "amarta et ze metsuyan", "fr": "tu l'as très bien dit", "en": "you said it perfectly" },
+        { "he": "החית קשה בשבילי", "t": "hachet kasha bishvili", "fr": "le het est difficile pour moi", "en": "the het is hard for me" },
+        { "he": "בכל יום מילה אחת", "t": "bechol yom mila achat", "fr": "un mot par jour", "en": "one word every day" }
+      ] },
+
+    { "id": "c08", "title": "Missing you today", "emoji": "💭", "level": 1,
+      "lines": [
+        { "he": "אני מתגעגעת אליך", "t": "ani mitga'aga'at elecha", "fr": "tu me manques", "en": "I miss you" },
+        { "he": "מה אתה עושה עכשיו", "t": "ma ata ose achshav", "fr": "qu'est-ce que tu fais maintenant ?", "en": "what are you doing now?" },
+        { "he": "אני יושבת בפגישה משעממת", "t": "ani yoshevet bifgisha mesha'amemet", "fr": "je suis dans une réunion ennuyeuse", "en": "I'm in a boring meeting" },
+        { "he": "אני חושבת עליך כל הבוקר", "t": "ani choshevet alecha kol haboker", "fr": "je pense à toi toute la matinée", "en": "I think about you all morning" },
+        { "he": "עוד ארבע שעות ואני בבית", "t": "od arba sha'ot va'ani babayit", "fr": "encore quatre heures et je rentre", "en": "four more hours and I'm home" },
+        { "he": "תשלח לי תמונה", "t": "tishlach li tmuna", "fr": "envoie-moi une photo", "en": "send me a photo" }
+      ] },
+
+    { "id": "c09", "title": "The air conditioner is broken", "emoji": "❄️", "level": 2,
+      "lines": [
+        { "he": "המזגן שוב לא עובד", "t": "hamazgan shuv lo oved", "fr": "la clim ne marche plus", "en": "the air conditioner isn't working again" },
+        { "he": "בדקת אם יש חשמל", "t": "badakta im yesh chashmal", "fr": "tu as vérifié s'il y a du courant ?", "en": "did you check if there's power?" },
+        { "he": "החשמל בסדר, הוא רק מרעיש", "t": "hachashmal beseder hu rak mar'ish", "fr": "le courant marche, il fait du bruit", "en": "the power is fine, it just makes noise" },
+        { "he": "אי אפשר לישון בחום הזה", "t": "i efshar lishon bachom haze", "fr": "impossible de dormir avec cette chaleur", "en": "we can't sleep in this heat" },
+        { "he": "אני מתקשרת לטכנאי מחר בבוקר", "t": "ani mitkasheret latechnai machar baboker", "fr": "j'appelle le technicien demain matin", "en": "I'm calling the technician tomorrow morning" },
+        { "he": "בינתיים נביא את המאוורר", "t": "beintayim navi et hame'avrer", "fr": "en attendant on prend le ventilateur", "en": "meanwhile let's bring the fan" },
+        { "he": "אני פותחת את החלונות", "t": "ani potachat et hachalonot", "fr": "j'ouvre les fenêtres", "en": "I'm opening the windows" }
+      ] },
+
+    { "id": "c10", "title": "A weekend at the sea", "emoji": "🏖️", "level": 2,
+      "lines": [
+        { "he": "בוא ניסע לים בסוף השבוע", "t": "bo nisa layam besof hashavua", "fr": "on va à la mer ce week-end ?", "en": "let's go to the sea this weekend" },
+        { "he": "מצאתי מלון זול בנהריה", "t": "matsati malon zol benahariya", "fr": "j'ai trouvé un hôtel pas cher", "en": "I found a cheap hotel in Nahariya" },
+        { "he": "כמה זה לשני לילות", "t": "kama ze lishnei leilot", "fr": "c'est combien pour deux nuits ?", "en": "how much for two nights?" },
+        { "he": "יוצאים בשישי אחרי העבודה", "t": "yots'im beshishi acharei ha'avoda", "fr": "on part vendredi après le travail", "en": "we leave Friday after work" },
+        { "he": "אל תשכח את בגד הים", "t": "al tishkach et beged hayam", "fr": "n'oublie pas ton maillot de bain", "en": "don't forget your swimsuit" },
+        { "he": "מזג האוויר אמור להיות מושלם", "t": "mezeg ha'avir amur lihyot mushlam", "fr": "la météo devrait être parfaite", "en": "the weather should be perfect" },
+        { "he": "אני כבר סופרת את הימים", "t": "ani kvar soferet et hayamim", "fr": "je compte déjà les jours", "en": "I'm already counting the days" }
+      ] },
+
+    { "id": "c11", "title": "The loud neighbours", "emoji": "🔊", "level": 2,
+      "lines": [
+        { "he": "השכנים עושים רעש נורא", "t": "hashchenim osim ra'ash nora", "fr": "les voisins font un bruit horrible", "en": "the neighbours are making a terrible noise" },
+        { "he": "כבר אחת בלילה", "t": "kvar achat balaila", "fr": "il est déjà une heure du matin", "en": "it's already one in the morning" },
+        { "he": "הם מזיזים רהיטים כל הלילה", "t": "hem mezizim rehitim kol halaila", "fr": "ils déplacent des meubles toute la nuit", "en": "they're moving furniture all night" },
+        { "he": "תרד לדבר איתם בבקשה", "t": "tered ledaber itam bevakasha", "fr": "descends leur parler s'il te plaît", "en": "go down and talk to them please" },
+        { "he": "אני לא רוצה לריב איתם", "t": "ani lo rotsa lariv itam", "fr": "je ne veux pas me disputer avec eux", "en": "I don't want to fight with them" },
+        { "he": "אז נתקשר לוועד הבית", "t": "az nitkasher lava'ad habayit", "fr": "alors on appelle le syndic", "en": "then we'll call the building committee" },
+        { "he": "מחר אני קונה אטמי אוזניים", "t": "machar ani kona itmei ozna'im", "fr": "demain j'achète des bouchons d'oreilles", "en": "tomorrow I'm buying earplugs" }
+      ] },
+
+    { "id": "c12", "title": "A bad day at work", "emoji": "😩", "level": 2,
+      "lines": [
+        { "he": "היה לי יום נורא בעבודה", "t": "haya li yom nora ba'avoda", "fr": "j'ai eu une journée horrible au travail", "en": "I had a terrible day at work" },
+        { "he": "מה קרה, ספר לי", "t": "ma kara saper li", "fr": "raconte-moi ce qui s'est passé", "en": "tell me what happened" },
+        { "he": "המנהל שלי צעק על כולם", "t": "hamenahel sheli tsa'ak al kulam", "fr": "mon chef a crié sur tout le monde", "en": "my boss shouted at everyone" },
+        { "he": "זה לא בגללך בכלל", "t": "ze lo biglalcha bichlal", "fr": "ce n'est pas ta faute", "en": "it's not your fault at all" },
+        { "he": "אני צריכה לצאת מהמשרד הזה", "t": "ani tsricha latset mehamisrad haze", "fr": "je dois quitter ce bureau", "en": "I need to get out of this office" },
+        { "he": "בוא נשתה יין הערב", "t": "bo nishte yayin haerev", "fr": "on boit un verre ce soir ?", "en": "let's have wine tonight" },
+        { "he": "אני מכינה לך אמבטיה חמה", "t": "ani mechina lecha ambatya chama", "fr": "je te prépare un bain chaud", "en": "I'm running you a hot bath" }
+      ] },
+
+    { "id": "c13", "title": "Your family is calling", "emoji": "📞", "level": 2,
+      "lines": [
+        { "he": "אמא שלך מתקשרת שוב", "t": "ima shelcha mitkasheret shuv", "fr": "ta mère t'appelle encore", "en": "your mom is calling again" },
+        { "he": "תענה לה, זה חשוב", "t": "ta'ane la ze chashuv", "fr": "réponds-lui, c'est important", "en": "answer her, it's important" },
+        { "he": "היא מזמינה אותנו לשישי בערב", "t": "hi mazmina otanu leshishi ba'erev", "fr": "elle nous invite vendredi soir", "en": "she's inviting us for Friday evening" },
+        { "he": "אנחנו הולכים לשם כל שבוע", "t": "anachnu holchim lesham kol shavua", "fr": "on y va toutes les semaines", "en": "we go there every week" },
+        { "he": "היא פשוט אוהבת אותך מאוד", "t": "hi pashut ohevet otcha meod", "fr": "elle t'aime beaucoup, c'est tout", "en": "she just loves you a lot" },
+        { "he": "בסדר, אבל נצא מוקדם", "t": "beseder aval netse mukdam", "fr": "d'accord, mais on part tôt", "en": "fine, but we're leaving early" },
+        { "he": "אני אביא עוגה מהמאפייה", "t": "ani avi uga mehama'afiya", "fr": "j'apporte un gâteau de la boulangerie", "en": "I'll bring a cake from the bakery" }
+      ] },
+
+    { "id": "c14", "title": "Choosing a film", "emoji": "🎬", "level": 2,
+      "lines": [
+        { "he": "מה אנחנו רואים הערב", "t": "ma anachnu ro'im haerev", "fr": "on regarde quoi ce soir ?", "en": "what are we watching tonight?" },
+        { "he": "יש סרט צרפתי חדש בנטפליקס", "t": "yesh seret tsarfati chadash benetfliks", "fr": "il y a un nouveau film français", "en": "there's a new French film on Netflix" },
+        { "he": "עם כתוביות בעברית בבקשה", "t": "im ktuviyot be'ivrit bevakasha", "fr": "avec des sous-titres en hébreu", "en": "with Hebrew subtitles please" },
+        { "he": "אתה תמיד נרדם באמצע", "t": "ata tamid nirdam be'emtsa", "fr": "tu t'endors toujours au milieu", "en": "you always fall asleep in the middle" },
+        { "he": "הפעם אני נשארת ערה עד הסוף", "t": "hapa'am ani nish'eret era ad hasof", "fr": "cette fois je reste éveillé jusqu'à la fin", "en": "this time I'm staying awake till the end" },
+        { "he": "אני מכינה פופקורן", "t": "ani mechina popkorn", "fr": "je prépare du pop-corn", "en": "I'm making popcorn" },
+        { "he": "בוא נתחיל, אני מוכנה", "t": "bo natchil ani muchana", "fr": "on commence, je suis prêt", "en": "let's start, I'm ready" }
+      ] },
+
+    { "id": "c15", "title": "Sick and the pharmacy", "emoji": "💊", "level": 2,
+      "lines": [
+        { "he": "יש לי חום גבוה", "t": "yesh li chom gavoha", "fr": "j'ai beaucoup de fièvre", "en": "I have a high fever" },
+        { "he": "מדדת חום הבוקר", "t": "madadeta chom haboker", "fr": "tu as pris ta température ce matin ?", "en": "did you take your temperature this morning?" },
+        { "he": "כמעט שלושים ותשע מעלות", "t": "kim'at shloshim vetesha ma'alot", "fr": "presque trente-neuf degrés", "en": "almost thirty-nine degrees" },
+        { "he": "אני עוברת בבית מרקחת בדרך", "t": "ani overet bebeit merkachat baderech", "fr": "je passe à la pharmacie en rentrant", "en": "I'll stop at the pharmacy on the way" },
+        { "he": "תביא אקמול ומיץ תפוזים", "t": "tavi akamol umits tapuzim", "fr": "apporte du paracétamol et du jus d'orange", "en": "bring paracetamol and orange juice" },
+        { "he": "תישאר במיטה, אני מטפלת בך", "t": "tisha'er bamita ani metapelet becha", "fr": "reste au lit, je m'occupe de toi", "en": "stay in bed, I'll take care of you" },
+        { "he": "מחר נלך לרופא אם צריך", "t": "machar nelech larofe im tsarich", "fr": "demain on va chez le médecin si besoin", "en": "tomorrow we'll see a doctor if needed" }
+      ] },
+
+    { "id": "c16", "title": "A birthday", "emoji": "🎂", "level": 2,
+      "lines": [
+        { "he": "יום הולדת שמח אהובי", "t": "yom huledet same'ach ahuvi", "fr": "joyeux anniversaire mon amour", "en": "happy birthday my love" },
+        { "he": "בן כמה אתה היום", "t": "ben kama ata hayom", "fr": "tu as quel âge aujourd'hui ?", "en": "how old are you today?" },
+        { "he": "אני מרגישה זקנה השנה", "t": "ani margisha zkena hashana", "fr": "je me sens vieux cette année", "en": "I feel old this year" },
+        { "he": "הזמנתי שולחן במסעדה האהובה עלינו", "t": "hizmanti shulchan bamis'ada haahuva aleinu", "fr": "j'ai réservé une table dans notre restaurant préféré", "en": "I booked a table at our favourite restaurant" },
+        { "he": "יש לי מתנה בשבילך", "t": "yesh li matana bishvilcha", "fr": "j'ai un cadeau pour toi", "en": "I have a present for you" },
+        { "he": "אמרנו בלי מתנות השנה", "t": "amarnu bli matanot hashana", "fr": "on avait dit sans cadeaux cette année", "en": "we said no presents this year" },
+        { "he": "שיקרתי, תפתח את זה", "t": "shikarti tiftach et ze", "fr": "j'ai menti, ouvre-le", "en": "I lied, open it" }
+      ] },
+
+    { "id": "c17", "title": "A French expression", "emoji": "🇫🇷", "level": 3,
+      "lines": [
+        { "he": "תלמד אותי ביטוי בצרפתית", "t": "telamed oti bituy betsarfatit", "fr": "apprends-moi une expression française", "en": "teach me a French expression" },
+        { "he": "יש לנו ביטוי לאהבה פתאומית", "t": "yesh lanu bituy le'ahava pit'omit", "fr": "on a une expression pour l'amour soudain", "en": "we have an expression for sudden love" },
+        { "he": "זה אומר מכת ברק", "t": "ze omer makat barak", "fr": "ça veut dire un coup de foudre", "en": "it means a lightning strike" },
+        { "he": "בעברית אומרים אהבה ממבט ראשון", "t": "be'ivrit omrim ahava mimabat rishon", "fr": "en hébreu on dit amour au premier regard", "en": "in Hebrew we say love at first sight" },
+        { "he": "ההגייה שלך משתפרת מאוד", "t": "hahagiya shelcha mishtaperet meod", "fr": "ta prononciation s'améliore beaucoup", "en": "your pronunciation is improving a lot" },
+        { "he": "הריש הצרפתית קשה לי", "t": "harish hatsarfatit kasha li", "fr": "le r français est difficile pour moi", "en": "the French r is hard for me" },
+        { "he": "תתאמן בגרון, לא בלשון", "t": "tit'amen bagaron lo balashon", "fr": "entraîne-toi avec la gorge, pas la langue", "en": "practise with your throat, not your tongue" }
+      ] },
+
+    { "id": "c18", "title": "Booking a flight to Paris", "emoji": "✈️", "level": 3,
+      "lines": [
+        { "he": "מצאתי טיסה זולה לפריז", "t": "matsati tisa zola lepariz", "fr": "j'ai trouvé un vol pas cher pour Paris", "en": "I found a cheap flight to Paris" },
+        { "he": "מתי בדיוק היא ממריאה", "t": "matai bidiyuk hi mamri'a", "fr": "elle décolle exactement quand ?", "en": "when exactly does it take off?" },
+        { "he": "בשש בבוקר מתל אביב", "t": "beshesh baboker mitel aviv", "fr": "à six heures du matin de Tel Aviv", "en": "at six in the morning from Tel Aviv" },
+        { "he": "זה אומר לקום בשלוש", "t": "ze omer lakum beshalosh", "fr": "ça veut dire se lever à trois heures", "en": "that means getting up at three" },
+        { "he": "נישן בשדה התעופה", "t": "nishan bisde hate'ufa", "fr": "on dormira à l'aéroport", "en": "we'll sleep at the airport" },
+        { "he": "ההורים שלי יאספו אותנו משם", "t": "hahorim sheli ya'asfu otanu misham", "fr": "mes parents viendront nous chercher", "en": "my parents will pick us up" },
+        { "he": "אני מזמינה את הכרטיסים עכשיו", "t": "ani mazmina et hakartisim achshav", "fr": "je réserve les billets maintenant", "en": "I'm booking the tickets now" }
+      ] },
+
+    { "id": "c19", "title": "The dishes, and after", "emoji": "🧽", "level": 3,
+      "lines": [
+        { "he": "הכלים בכיור מאתמול", "t": "hakelim bakiyor me'etmol", "fr": "la vaisselle est là depuis hier", "en": "the dishes from yesterday are in the sink" },
+        { "he": "חשבתי שאתה תשטוף אותם", "t": "chashavti she'ata tishtof otam", "fr": "je pensais que tu allais les laver", "en": "I thought you would wash them" },
+        { "he": "אני תמיד שוטפת אותם לבד", "t": "ani tamid shotefet otam levad", "fr": "je les lave toujours tout seul", "en": "I always wash them alone" },
+        { "he": "זה לא נכון ואתה יודע", "t": "ze lo nachon ve'ata yodea", "fr": "ce n'est pas vrai et tu le sais", "en": "that's not true and you know it" },
+        { "he": "בוא לא נריב על צלחות", "t": "bo lo nariv al tsalachot", "fr": "on va pas se disputer pour des assiettes", "en": "let's not fight about plates" },
+        { "he": "סליחה, הייתי עצבנית", "t": "slicha hayiti atsbanit", "fr": "désolé, j'étais énervé", "en": "sorry, I was irritable" },
+        { "he": "בוא נשטוף אותם ביחד", "t": "bo nishtof otam beyachad", "fr": "on les lave ensemble ?", "en": "let's wash them together" },
+        { "he": "אני אוהבת אותך גם כשאנחנו רבים", "t": "ani ohevet otcha gam kshe'anachnu ravim", "fr": "je t'aime même quand on se dispute", "en": "I love you even when we fight" }
+      ] },
+
+    { "id": "c20", "title": "The landlord and the rent", "emoji": "🏠", "level": 3,
+      "lines": [
+        { "he": "בעל הבית העלה את שכר הדירה", "t": "ba'al habayit he'ela et schar hadira", "fr": "le propriétaire a augmenté le loyer", "en": "the landlord raised the rent" },
+        { "he": "בכמה הוא העלה", "t": "bechama hu he'ela", "fr": "il a augmenté de combien ?", "en": "by how much did he raise it?" },
+        { "he": "בחמש מאות שקל בחודש", "t": "bechamesh me'ot shekel bachodesh", "fr": "de cinq cents shekels par mois", "en": "by five hundred shekels a month" },
+        { "he": "זה לא חוקי בלי הודעה מראש", "t": "ze lo chuki bli hoda'a merosh", "fr": "ce n'est pas légal sans préavis", "en": "that's not legal without notice" },
+        { "he": "החוזה מסתיים בדצמבר", "t": "hachoze mistayem bedetsember", "fr": "le contrat se termine en décembre", "en": "the contract ends in December" },
+        { "he": "אולי נחפש דירה אחרת", "t": "ulai nechapes dira acheret", "fr": "on cherche peut-être un autre appartement", "en": "maybe we'll look for another apartment" },
+        { "he": "אני מדברת איתו מחר בבוקר", "t": "ani medaberet ito machar baboker", "fr": "je lui parle demain matin", "en": "I'm talking to him tomorrow morning" }
+      ] },
+
+    { "id": "c21", "title": "Planning a surprise", "emoji": "🎁", "level": 3,
+      "lines": [
+        { "he": "אני מארגנת הפתעה ליום שישי", "t": "ani me'argenet hafta'a leyom shishi", "fr": "j'organise une surprise pour vendredi", "en": "I'm organising a surprise for Friday" },
+        { "he": "כולם יודעים חוץ ממנה", "t": "kulam yod'im chuts mimena", "fr": "tout le monde sait sauf elle", "en": "everyone knows except her" },
+        { "he": "תעסיק אותה עד שמונה", "t": "ta'asik ota ad shmone", "fr": "occupe-la jusqu'à huit heures", "en": "keep her busy until eight" },
+        { "he": "אני מביאה את העוגה והבלונים", "t": "ani mevi'a et ha'uga vehabalonim", "fr": "j'apporte le gâteau et les ballons", "en": "I'm bringing the cake and the balloons" },
+        { "he": "אל תספר לאף אחד", "t": "al tesaper le'af echad", "fr": "ne le dis à personne", "en": "don't tell anyone" },
+        { "he": "היא תבכה מרוב התרגשות", "t": "hi tivke merov hitragshut", "fr": "elle va pleurer d'émotion", "en": "she'll cry from emotion" },
+        { "he": "כולם מתחבאים בסלון", "t": "kulam mitchab'im basalon", "fr": "tout le monde se cache dans le salon", "en": "everyone hides in the living room" }
+      ] },
+
+    { "id": "c22", "title": "Thinking about you", "emoji": "😘", "level": 3,
+      "lines": [
+        { "he": "חשבתי עליך כל היום", "t": "chashavti alecha kol hayom", "fr": "j'ai pensé à toi toute la journée", "en": "I thought about you all day" },
+        { "he": "מה בדיוק חשבת", "t": "ma bidiyuk chashavta", "fr": "tu as pensé à quoi exactement ?", "en": "what exactly were you thinking?" },
+        { "he": "דברים שאסור לכתוב בהודעה", "t": "dvarim she'asur lichtov behoda'a", "fr": "des choses interdites par message", "en": "things you can't write in a message" },
+        { "he": "אני חוזרת הביתה מוקדם היום", "t": "ani chozeret habaita mukdam hayom", "fr": "je rentre tôt à la maison aujourd'hui", "en": "I'm coming home early today" },
+        { "he": "תשאיר את הדלת פתוחה", "t": "tash'ir et hadelet ptucha", "fr": "laisse la porte ouverte", "en": "leave the door open" },
+        { "he": "החולצה הכחולה נראית עליך מדהים", "t": "hachultsa hakchula nir'et alecha madhim", "fr": "la chemise bleue te va très bien", "en": "the blue shirt suits you really well" },
+        { "he": "עכשיו אני לא מצליחה להתרכז", "t": "achshav ani lo matslicha lehitrakez", "fr": "maintenant je n'arrive plus à me concentrer", "en": "now I can't concentrate" }
+      ] }
+  ]
+}

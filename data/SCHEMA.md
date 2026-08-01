@@ -84,6 +84,29 @@ difficulty.
 translation, the obvious category, the obvious sound, the obvious companion
 word. Banned words are shown in the describer's speaking language.
 
+## data/chat.json
+
+For the texting game. A thread is a short exchange between the two of them,
+played back one bubble at a time.
+
+```json
+{ "threads": [
+  { "id": "c01", "title": "On the way home", "emoji": "🚗", "level": 1,
+    "lines": [
+      { "he": "אני בדרך הביתה", "t": "ani baderech habaita",
+        "fr": "je rentre à la maison", "en": "I'm on my way home" }
+    ] } ] }
+```
+
+Each thread is 5 to 8 lines and reads as one continuous conversation, so the
+lines must follow each other: a question then its answer, not a pile of
+unrelated sentences. Every line is short enough to fire back in a couple of
+seconds, 3 to 8 words.
+
+The game shows a line in the reader's native language and asks for the same
+line in their target language, so a line has to work in both directions and
+must not depend on knowing who sent it.
+
 ## data/headsup.json
 
 For the forehead game. One word, one emoji, one deck.

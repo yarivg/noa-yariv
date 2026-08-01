@@ -72,9 +72,21 @@ window.Store = (function () {
     };
   }
 
+  /* Difficulty is one global setting rather than a menu inside every game.
+     It is a filter over the content's `level` field, not a change to any
+     game's rules: the same round, harder cards. Anything that carries no
+     level (the Taboo and forehead decks) ignores it. */
+  var BANDS = {
+    easy: { label: 'Easy',   emoji: '🌱', levels: [1],    hint: 'the basics' },
+    mid:  { label: 'Normal', emoji: '🙂', levels: [1, 2], hint: 'everyday' },
+    hard: { label: 'Hard',   emoji: '🔥', levels: [2, 3], hint: 'real conversation' },
+    all:  { label: 'Mix',    emoji: '🎲', levels: [1, 2, 3], hint: 'everything' }
+  };
+
   function blank() {
     return {
       current: '',
+      difficulty: 'mid',
       noa: blankPlayer(),
       yariv: blankPlayer(),
       coop: { wins: 0, losses: 0, bestStreak: 0, best: {} }
@@ -94,6 +106,7 @@ window.Store = (function () {
       });
       if (saved.coop) for (var c in base.coop) if (saved.coop[c] !== undefined) base.coop[c] = saved.coop[c];
       if (typeof saved.current === 'string') base.current = saved.current;
+      if (BANDS[saved.difficulty]) base.difficulty = saved.difficulty;
     } catch (e) { /* first run, or someone cleared the browser */ }
     return base;
   }
@@ -111,6 +124,32 @@ window.Store = (function () {
   function setCurrent(id) { data.current = PLAYERS[id] ? id : ''; write(); }
   function other(id) { return id === 'noa' ? PLAYERS.yariv : PLAYERS.noa; }
   function stats(id) { return data[id] || blankPlayer(); }
+
+  /* ---------------------------------------------------------- difficulty */
+
+  function bands() {
+    return Object.keys(BANDS).map(function (k) {
+      var b = BANDS[k];
+      return { id: k, label: b.label, emoji: b.emoji, hint: b.hint, levels: b.levels };
+    });
+  }
+  function difficulty() { return BANDS[data.difficulty] ? data.difficulty : 'mid'; }
+  function band() { return BANDS[difficulty()]; }
+  function setDifficulty(id) { if (BANDS[id]) { data.difficulty = id; write(); } }
+
+  /* Filter any levelled content list by the current setting.
+
+     Falls back to the untouched list when the filter would leave too
+     little to play with: a thin deck at one level is a worse game than
+     an off-difficulty one, and an empty deck is not a game at all. */
+  function levelled(list, minimum) {
+    if (!list || !list.length) return list || [];
+    var want = band().levels;
+    var kept = list.filter(function (item) {
+      return want.indexOf(item.level || 1) !== -1;
+    });
+    return kept.length >= (minimum || 8) ? kept : list;
+  }
   function coop() { return data.coop; }
 
   function levelOf(xp) { return Math.floor(Math.sqrt(xp / 60)) + 1; }
@@ -228,6 +267,7 @@ window.Store = (function () {
   return {
     players: players, player: player, current: current, setCurrent: setCurrent, other: other,
     stats: stats, coop: coop, progress: progress, levelOf: levelOf, title: title,
+    bands: bands, difficulty: difficulty, band: band, setDifficulty: setDifficulty, levelled: levelled,
     award: award, answered: answered, playedGame: playedGame, record: record, coopResult: coopResult,
     badgeList: badgeList, hasBadge: hasBadge, earn: earn, checkAuto: checkAuto,
     reset: reset

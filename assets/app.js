@@ -19,7 +19,7 @@
 
   var el = U.el, clear = U.clear;
 
-  var ORDER = ['duel', 'phrase', 'describe', 'pingpong', 'tabou', 'headsup'];
+  var ORDER = ['duel', 'phrase', 'texting', 'describe', 'pingpong', 'tabou', 'headsup'];
   var DATA = null;
   var teardown = null;
   var screen, topbar, topTitle, topSub, backBtn, soundBtn;
@@ -27,15 +27,18 @@
   /* ---------------------------------------------------------- data */
 
   function loadData() {
-    var files = ['words', 'sentences', 'scenes', 'tabou', 'headsup'];
+    var files = ['words', 'sentences', 'chat', 'scenes', 'tabou', 'headsup'];
     return Promise.all(files.map(function (f) {
       return fetch('data/' + f + '.json', { cache: 'no-cache' }).then(function (r) {
         if (!r.ok) throw new Error(f + '.json returned ' + r.status);
         return r.json();
       });
     })).then(function (parts) {
+      // Every file wraps its array in one key, usually its own name.
+      // chat.json is the exception: it holds `threads`.
+      var KEYS = { chat: 'threads' };
       var bag = {};
-      files.forEach(function (f, i) { bag[f] = parts[i][f] || parts[i]; });
+      files.forEach(function (f, i) { bag[f] = parts[i][KEYS[f] || f] || parts[i]; });
       return bag;
     });
   }
@@ -89,6 +92,8 @@
     screen.appendChild(pickerCard(me));
 
     if (me) {
+      screen.appendChild(difficultyCard());
+
       screen.appendChild(el('h2.section-title', el('span', '🎮'), 'Play alone'));
       var solo = el('div.game-grid');
       ORDER.filter(function (g) { return Games[g] && Games[g].mode === 'solo'; })
@@ -131,6 +136,31 @@
       ));
     });
     return wrap;
+  }
+
+  /* One difficulty for the whole site rather than a menu inside every
+     game. It is a filter on the content, so the Taboo and forehead decks,
+     which carry no level, quietly ignore it. Say that out loud here so
+     nobody wonders why Hard changed nothing. */
+  function difficultyCard() {
+    var now = Store.difficulty();
+    var row = el('div.diff-row');
+    Store.bands().forEach(function (b) {
+      row.appendChild(el('button.diff' + (b.id === now ? '.on' : ''), {
+        onclick: function () {
+          SFX.tap();
+          Store.setDifficulty(b.id);
+          render();
+        }
+      },
+        el('span.diff-emoji', b.emoji),
+        el('span.diff-label', b.label),
+        el('small.diff-hint', b.hint)
+      ));
+    });
+    return el('div.diff-card',
+      el('div.diff-head', el('b', 'Word difficulty'), el('small', 'words and sentences only')),
+      row);
   }
 
   function gameCard(g, me) {

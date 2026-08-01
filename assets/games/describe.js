@@ -39,7 +39,7 @@ window.Games.describe = (function () {
 
     var me = ctx.player;
     var to = me.target;                 // the language we listen in
-    var scenes = pickScenes(ctx.data.scenes, to);
+    var scenes = pickScenes(Store.levelled(ctx.data.scenes, 3), to);
 
     var state = {
       score: 0, combo: 0, bestCombo: 0,

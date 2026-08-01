@@ -156,6 +156,30 @@ small { font-size: .78em; }
   transition: width .5s cubic-bezier(.2, .9, .3, 1.3);
 }
 
+/* ---------------------------------------------------------- difficulty */
+
+.diff-card {
+  margin-top: 18px; padding: 12px;
+  background: #fff; border-radius: var(--r); box-shadow: var(--shadow);
+}
+.diff-head { display: flex; align-items: baseline; gap: 8px; margin: 2px 4px 10px; }
+.diff-head b { font-size: 14px; }
+.diff-head small { color: var(--ink-soft); }
+.diff-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.diff {
+  padding: 9px 3px 8px; border: 3px solid transparent; border-radius: 15px;
+  background: #f7f4fb; text-align: center; line-height: 1.15;
+  transition: transform .12s;
+}
+.diff:active { transform: translateY(2px); }
+.diff-emoji { display: block; font-size: 21px; }
+.diff-label { display: block; font-size: 12.5px; font-weight: 700; }
+.diff-hint  { display: block; font-size: 9px; color: var(--ink-soft); }
+.diff.on {
+  border-color: var(--purple); background: #fff;
+  box-shadow: 0 4px 0 var(--purple);
+}
+
 .section-title {
   display: flex; align-items: center; gap: 8px;
   margin: 26px 4px 10px; font-size: 15px;
@@ -187,6 +211,7 @@ small { font-size: .78em; }
 .gc-best small { display: block; font-size: 9px; text-transform: uppercase; color: var(--ink-soft); font-weight: 400; }
 
 .g-duel     { --accent: var(--yellow); }
+.g-texting  { --accent: var(--pink); }
 .g-phrase   { --accent: var(--purple); }
 .g-describe { --accent: var(--green); }
 .g-pingpong { --accent: var(--orange); }

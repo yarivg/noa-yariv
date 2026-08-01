@@ -61,7 +61,7 @@ window.Games.phrase = (function () {
     var me = ctx.player;
     var from = me.native, to = me.target;   // prompt language, answer language
     var canMic = Speech.canListen();
-    var deck = pickRound(ctx.data.sentences || []);
+    var deck = pickRound(Store.levelled(ctx.data.sentences || []));
 
     var state = {
       idx: -1, score: 0, combo: 0, bestCombo: 0, hits: 0, misses: 0,

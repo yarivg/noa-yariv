@@ -22,7 +22,7 @@ DATA = ROOT / "data"
 THEMES = {
     "greetings", "people", "food", "home", "city", "time", "verbs",
     "adjectives", "nature", "numbers", "body", "travel", "feelings",
-    "clothes", "work",
+    "clothes", "work", "romance",
 }
 DECKS = {"animals", "food", "home", "city", "actions", "israel", "france"}
 
@@ -121,6 +121,35 @@ def check_sentences():
     return items
 
 
+def check_chat():
+    threads = load("chat.json", "threads")
+    check_ids("chat", threads)
+    lines = 0
+    for thread in threads:
+        where = "chat/%s" % thread.get("id", "?")
+        if not thread.get("title"):
+            fail(where, "no title")
+        if not thread.get("emoji"):
+            fail(where, "no emoji")
+        if thread.get("level") not in (1, 2, 3):
+            fail(where, "level must be 1, 2 or 3")
+        rows = thread.get("lines") or []
+        if not 4 <= len(rows) <= 9:
+            fail(where, "%d lines, want 5 to 8" % len(rows))
+        for i, row in enumerate(rows):
+            spot = "%s line %d" % (where, i + 1)
+            for key in ("he", "t", "fr", "en"):
+                if not row.get(key):
+                    fail(spot, "missing %r" % key)
+            check_hebrew(spot, row.get("he", ""), row.get("t", ""))
+            # A texting round gives you a handful of seconds per line.
+            for lang in ("he", "fr"):
+                if len(str(row.get(lang, "")).split()) > 9:
+                    fail(spot, "%s side is too long to fire back" % lang)
+            lines += 1
+    return threads, lines
+
+
 def check_scenes():
     items = load("scenes.json", "scenes")
     check_ids("scenes", items)
@@ -193,9 +222,12 @@ def check_headsup():
 
 
 def main():
+    threads, chat_lines = check_chat()
     counts = {
         "words": len(check_words()),
         "sentences": len(check_sentences()),
+        "chat threads": len(threads),
+        "chat lines": chat_lines,
         "scenes": len(check_scenes()),
         "tabou": len(check_tabou()),
         "headsup": len(check_headsup()),
