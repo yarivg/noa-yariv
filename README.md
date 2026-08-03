@@ -18,11 +18,11 @@ play. Scores live in that browser and nowhere else.
 | | | |
 |---|---|---|
 | ⚡ | **Speed Duel** | Solo. Sixty seconds of cards. A word in the language you already speak, said out loud in the one you are learning. Every right answer buys two more seconds, so a good run lasts longer than a bad one, and three in a row doubles everything after it. |
-| 🧩 | **Phrase Race** | Solo. Whole sentences, not single words. Alternates between tapping scrambled word tiles into the right order and saying the sentence into the microphone. Twenty seconds each. |
+| 🧩 | **Phrase Race** | Solo. Whole sentences, not single words. Alternates between tapping scrambled word tiles into the right order and giving the sentence back whole — said into the microphone or typed out in full, your choice on every card. Twenty seconds each. |
 | 💬 | **Texting** | Solo. A chat thread with the other one. A message lands in the language you speak, and you have twelve seconds to fire the same line back in the language you are learning. Your own voice renders as the outgoing bubble, and lands with two blue ticks if you nailed it. Miss, and you left them on read. |
 | 🖼️ | **Describe It** | Solo. A picture built from emoji, and forty-five seconds to talk about it out loud. The words we are listening for sit face down underneath and flip up as you say them. Clear the board before the buzzer for a time bonus. |
 | 🏓 | **Ping-Pong** | Together, one phone. Turns alternate behind a handover card, and the pair share three lives and one chain counter. Noa gets a French word and says the Hebrew; Yariv gets a Hebrew word and says the French. The clock shrinks every turn, from ten seconds down to four. Runs until the lives are gone, or until you bank it. |
-| 🚫 | **Taboo** | Together, one phone. The describer speaks the language they are *learning* while their partner, who is native in it, guesses. Four forbidden words per card, including the obvious one. Ninety seconds each way, one shared score. |
+| 🚫 | **Taboo** | Together, one phone. The describer speaks the language they are *learning* while their partner, who is native in it, guesses. The whole card is in that one language: the word and its four forbidden words, with English one tap away. Ninety seconds each way, one shared score. |
 | 🙈 | **On My Forehead** | Together, one phone. Hold it to your forehead; the word is in the language you are learning and your partner describes it without saying it. Tilt down for a hit, up for a pass, or tap if the phone will not give up its motion sensors. |
 
 Four of them you play alone on the bus. Three of them only work with the other
@@ -45,6 +45,21 @@ It applies to the games built on words, sentences, chat threads and pictures.
 Taboo and On My Forehead carry no level on their cards and quietly ignore it. If
 a band would leave a deck too thin to play, the full deck comes back rather than
 handing you a four card round.
+
+## The clock
+
+The other setting on the home screen, and it is global too: **Timed** or **No
+limit**. Off, nothing anywhere counts down. Every game keeps its scoring, its
+lives and its combo multipliers, and whatever the buzzer used to end you end
+yourself — Finish the round in Speed Duel, Done with this picture in Describe It,
+End my half in Taboo, 🏁 in the corner in On My Forehead. The two games that end
+on their own content, Phrase Race and Texting, simply stop timing you.
+
+Speed bonuses measure how long you took, so they still pay. Describe It's clear
+bonus pays for seconds left on the clock, so with no clock there are none to pay
+for; clearing a picture is still worth doing, it is just worth the chips.
+Records go in the same table either way, which is worth knowing before anyone
+claims one.
 
 ## Which way round the languages go
 
@@ -72,10 +87,14 @@ recogniser, which exists in Chrome (desktop and Android) and Safari on iOS, and
 does not exist in Firefox at all.
 
 So every microphone feature has a fallback that is a real way to play, not an
-apology: the answer is revealed and you mark yourself, or the sentence becomes a
-tile puzzle, or you tap the word you just said out loud. The clock keeps running
+apology: the answer is revealed and you mark yourself, or you type the sentence
+out in full, or you tap the word you just said out loud. The clock keeps running
 either way. A game that cannot be played on your partner's phone is not a game
 you will play.
+
+Typing is not only a fallback. Phrase Race and Texting both take a typed answer
+whenever you would rather write than talk, graded by the same comparison and
+worth the same points.
 
 Grading is deliberately forgiving. Accents, nikud, punctuation, final letter
 forms, articles and a couple of wrong characters are all ignored before the

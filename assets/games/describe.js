@@ -40,6 +40,7 @@ window.Games.describe = (function () {
     var me = ctx.player;
     var to = me.target;                 // the language we listen in
     var scenes = pickScenes(Store.levelled(ctx.data.scenes, 3), to);
+    var untimed = Store.untimed();      // no buzzer: the player moves on by hand
 
     var state = {
       score: 0, combo: 0, bestCombo: 0,
@@ -67,11 +68,15 @@ window.Games.describe = (function () {
           'Three pictures. Talk about each one out loud in ' + langName(to) +
           ' and the words hiding underneath flip over.'),
         el('ul.rules',
-          el('li', '⏱️ 45 seconds a picture. Keep talking, do not stop to think.'),
+          el('li', untimed
+            ? '♾️ No clock. Stay on a picture as long as you like, then tap for the next one.'
+            : '⏱️ 45 seconds a picture. Keep talking, do not stop to think.'),
           el('li', '🃏 Each chip shows only its English meaning. Say the ' +
             langName(to) + ' word and it turns face up.'),
           el('li', '🔥 Chips in a row build a multiplier, like the duel.'),
-          el('li', '🏁 Flip every chip before the buzzer for a big time bonus.'),
+          el('li', untimed
+            ? '🏁 Flip every chip to clear the picture. The time bonus needs a clock, so there is none.'
+            : '🏁 Flip every chip before the buzzer for a big time bonus.'),
           el('li', live
             ? '🎤 The microphone listens the whole time - just describe the picture.'
             : '👆 This browser has no microphone recognition, so it is on your honour: say the word out loud, then tap its chip. Those are worth 40% less. Chrome or Safari gives you the mic.')
@@ -91,7 +96,7 @@ window.Games.describe = (function () {
 
     function board() {
       clear(root);
-      ui.time = el('div.hud-time', '0:45');
+      ui.time = el('div.hud-time', untimed ? '∞' : '0:45');
       ui.score = el('div.hud-score', '0');
       ui.combo = el('div.hud-combo');
       ui.bar = el('i');
@@ -140,7 +145,7 @@ window.Games.describe = (function () {
 
       SFX.swipe();
 
-      clock = U.ticker(SCENE_MS, function (left) {
+      clock = untimed ? U.noClock() : U.ticker(SCENE_MS, function (left) {
         scene.left = left;
         ui.time.textContent = U.clock(left);
         ui.bar.style.width = Math.min(100, (left / SCENE_MS) * 100) + '%';
@@ -229,6 +234,12 @@ window.Games.describe = (function () {
           el('div.honour',
             el('b', '🗣️ Say it out loud, then tap its chip'),
             el('small', 'Honour system: ' + Math.round(PER_WORD * HONOUR) + ' points a chip instead of ' + PER_WORD + '.'))));
+      }
+      // With no buzzer, a word you cannot get would strand the round.
+      if (untimed) {
+        ui.strip.appendChild(el('button.ghost-btn', {
+          onclick: function () { SFX.tap(); sceneOver(false); }
+        }, '🏁 Done with this picture →'));
       }
     }
 
@@ -344,14 +355,16 @@ window.Games.describe = (function () {
       var wait = 1500;
 
       if (clearedIt) {
-        var secs = Math.floor(scene.left / 1000);
+        // No clock means no seconds left to be paid for, only the clear.
+        var secs = untimed ? 0 : Math.floor(scene.left / 1000);
         var bonus = secs * CLEAR_PER_SEC;
         state.score += bonus;
         state.cleared++;
         Store.earn(me.id, 'describer');
         paint();
         ui.frame.classList.add('cleared');
-        ui.caption.appendChild(el('span.clear-bonus', '🏁 cleared! +' + bonus + ' for ' + secs + 's left'));
+        ui.caption.appendChild(el('span.clear-bonus',
+          bonus ? '🏁 cleared! +' + bonus + ' for ' + secs + 's left' : '🏁 cleared!'));
         SFX.win();
         // The frame clips its own overflow, so the burst goes on the
         // stage around it or nobody ever sees it.

@@ -26,6 +26,7 @@ window.Games.duel = (function () {
     var from = me.native, to = me.target;   // prompt language, answer language
     var deck = U.shuffle(Store.levelled(ctx.data.words));
     var i = 0;
+    var untimed = Store.untimed();          // no buzzer: the player ends the round
 
     var state = {
       score: 0, combo: 0, bestCombo: 0, hits: 0, misses: 0,
@@ -44,7 +45,9 @@ window.Games.duel = (function () {
         el('p.intro-lead',
           'A card in ' + langName(from) + '. Say it in ' + langName(to) + '. As fast as you can.'),
         el('ul.rules',
-          el('li', '⏱️ 60 seconds. Every right answer buys you 2 more.'),
+          el('li', untimed
+            ? '♾️ No clock. Go through as many cards as you like and tap Finish when you are done.'
+            : '⏱️ 60 seconds. Every right answer buys you 2 more.'),
           el('li', '🔥 3 in a row = double points. 6 in a row = triple.'),
           el('li', Speech.canListen()
             ? '🎤 Tap "I know it!", then say it out loud.'
@@ -67,7 +70,7 @@ window.Games.duel = (function () {
 
     function board() {
       clear(root);
-      ui.time = el('div.hud-time', '1:00');
+      ui.time = el('div.hud-time', untimed ? '∞' : '1:00');
       ui.score = el('div.hud-score', '0');
       ui.combo = el('div.hud-combo');
       ui.bar = el('i');
@@ -87,7 +90,7 @@ window.Games.duel = (function () {
     }
 
     function start() {
-      clock = U.ticker(ROUND_MS, function (left) {
+      clock = untimed ? U.noClock() : U.ticker(ROUND_MS, function (left) {
         ui.time.textContent = U.clock(left);
         ui.bar.style.width = Math.min(100, (left / ROUND_MS) * 100) + '%';
         ui.time.classList.toggle('urgent', left < 10000);
@@ -128,6 +131,12 @@ window.Games.duel = (function () {
       ui.action.appendChild(el('button.ghost-btn', {
         onclick: function () { SFX.pass(); miss(w, true); }
       }, 'Skip →'));
+      // With no buzzer, the only way out of the deck is this button.
+      if (untimed) {
+        ui.action.appendChild(el('button.ghost-btn', {
+          onclick: function () { SFX.tap(); end(); }
+        }, '🏁 Finish the round'));
+      }
     }
 
     /* The player has claimed the word. Open the mic, grade the moment
@@ -267,6 +276,7 @@ window.Games.duel = (function () {
     function end() {
       if (state.dead) return;
       state.dead = true;
+      if (clock) { clock.stop(); clock = null; }
       if (mic) { mic.stop(); mic = null; }
       clearTimeout(cardTimer);
       var perfect = state.hits > 0 && state.misses === 0;

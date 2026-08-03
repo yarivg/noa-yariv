@@ -93,6 +93,7 @@
 
     if (me) {
       screen.appendChild(difficultyCard());
+      screen.appendChild(clockCard());
 
       screen.appendChild(el('h2.section-title', el('span', '🎮'), 'Play alone'));
       var solo = el('div.game-grid');
@@ -160,6 +161,35 @@
     });
     return el('div.diff-card',
       el('div.diff-head', el('b', 'Word difficulty'), el('small', 'words and sentences only')),
+      row);
+  }
+
+  /* The second global setting: the clock, or no clock at all. Off, every
+     game keeps its scoring, drops its timers and hands you a button to
+     end the round when you are done. */
+  function clockCard() {
+    var off = Store.untimed();
+    var modes = [
+      { on: false, emoji: '⏱️', label: 'Timed', hint: 'as designed' },
+      { on: true, emoji: '♾️', label: 'No limit', hint: 'take your time' }
+    ];
+    var row = el('div.diff-row.two');
+    modes.forEach(function (m) {
+      row.appendChild(el('button.diff' + (m.on === off ? '.on' : ''), {
+        onclick: function () {
+          SFX.tap();
+          Store.setUntimed(m.on);
+          render();
+        }
+      },
+        el('span.diff-emoji', m.emoji),
+        el('span.diff-label', m.label),
+        el('small.diff-hint', m.hint)
+      ));
+    });
+    return el('div.diff-card',
+      el('div.diff-head', el('b', 'Clock'),
+        el('small', off ? 'nothing ever runs out' : 'every game against the clock')),
       row);
   }
 

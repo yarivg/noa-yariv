@@ -82,6 +82,7 @@ window.Games.texting = (function () {
     var mate = ctx.partner || Store.other(me.id);
     var from = me.native, to = me.target;   // they text in one, you answer in the other
     var canMic = Speech.canListen();
+    var untimed = Store.untimed();          // no bar, no nagging, no read receipts
 
     var round = buildRound(threadsFrom(ctx.data), from, to);
     if (!round.lines.length) return empty();
@@ -126,9 +127,12 @@ window.Games.texting = (function () {
         el('h2', 'Texting'),
         el('p.intro-lead',
           mate.name + ' is texting you in ' + langName(from) +
-          '. Reply with the same line in ' + langName(to) + ' before the bar runs out.'),
+          '. Reply with the same line in ' + langName(to) +
+          (untimed ? ', in your own time.' : ' before the bar runs out.')),
         el('ul.rules',
-          el('li', '📩 ' + round.lines.length + ' messages. 12 seconds each.'),
+          el('li', untimed
+            ? '📩 ' + round.lines.length + ' messages, and no clock on any of them.'
+            : '📩 ' + round.lines.length + ' messages. 12 seconds each.'),
           el('li', canMic
             ? '🎤 Tap the mic and say your reply. It types itself into the bubble.'
             : '⌨️ No microphone in this browser, so you type your replies instead. Same game, same grading, and nobody can hear your accent.'),
@@ -166,8 +170,9 @@ window.Games.texting = (function () {
           el('div.tx-tally', ui.score, ui.combo)
         ),
         ui.thread = el('div.tx-thread'),
+        // No clock, no hair-thin bar to watch: the composer is just a composer.
         ui.composer = el('div.tx-composer',
-          el('div.timebar.tx-timebar', ui.bar = el('i')))
+          untimed ? null : el('div.timebar.tx-timebar', ui.bar = el('i')))
       );
       root.appendChild(ui.phone);
 
@@ -271,6 +276,7 @@ window.Games.texting = (function () {
 
     function startClock(s) {
       stopClock();
+      if (untimed) { clock = U.noClock(); return; }
       clock = U.ticker(LINE_MS, function (left) {
         ui.bar.style.width = Math.min(100, (left / LINE_MS) * 100) + '%';
         ui.composer.classList.toggle('hot', left < NAG_MS);

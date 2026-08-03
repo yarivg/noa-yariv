@@ -166,6 +166,7 @@ small { font-size: .78em; }
 .diff-head b { font-size: 14px; }
 .diff-head small { color: var(--ink-soft); }
 .diff-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+.diff-row.two { grid-template-columns: 1fr 1fr; }
 .diff {
   padding: 9px 3px 8px; border: 3px solid transparent; border-radius: 15px;
   background: #f7f4fb; text-align: center; line-height: 1.15;

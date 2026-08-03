@@ -13,8 +13,10 @@
             more go at half points.
 
      SAY    no tiles, no scaffolding. Read the whole thing out loud
-            and the microphone marks it. Firefox has no recogniser,
-            so on Firefox every sentence is a BUILD instead.
+            and the microphone marks it, or type it in full instead:
+            both are the same sentence with nothing to lean on, so
+            they are graded and paid identically. Firefox has no
+            recogniser, so there the sentence goes straight to typing.
 
    Whatever happens, the phone reads the sentence back before the
    next one. Hearing the real thing is the point of the round.
@@ -61,6 +63,7 @@ window.Games.phrase = (function () {
     var me = ctx.player;
     var from = me.native, to = me.target;   // prompt language, answer language
     var canMic = Speech.canListen();
+    var untimed = Store.untimed();          // no 20 second window on a sentence
     var deck = pickRound(Store.levelled(ctx.data.sentences || []));
 
     var state = {
@@ -88,9 +91,11 @@ window.Games.phrase = (function () {
         el('ul.rules',
           el('li', '🧩 Build: tap the word tiles into the right order.'),
           el('li', canMic
-            ? '🎤 Say: every other sentence, just say the whole thing out loud.'
-            : '🎤 This browser has no microphone recognition, so every sentence is a build. Chrome or Safari gives you the mic.'),
-          el('li', '⏱️ 20 seconds each. Answer under 8 and there is a bonus.'),
+            ? '🎤 Say: every other sentence, say the whole thing out loud — or tap ⌨️ and type it instead.'
+            : '⌨️ This browser has no microphone recognition, so every other sentence is typed out in full instead. Chrome or Safari gives you the mic.'),
+          el('li', untimed
+            ? '♾️ No clock. Answer under 8 seconds and the speed bonus still pays.'
+            : '⏱️ 20 seconds each. Answer under 8 and there is a bonus.'),
           el('li', '🔥 3 in a row = double points. 6 in a row = triple.')
         ),
         el('button.big-btn.primary.xl', {
@@ -111,7 +116,7 @@ window.Games.phrase = (function () {
     function board() {
       clear(root);
       ui.count = el('div.hud-score', '1/' + deck.length);
-      ui.time = el('div.hud-time', '20s');
+      ui.time = el('div.hud-time', untimed ? '∞' : '20s');
       ui.score = el('div.hud-score', '0');
       ui.combo = el('div.hud-combo');
       ui.bar = el('i');
@@ -134,9 +139,9 @@ window.Games.phrase = (function () {
 
     /* ---------------------------------------------------------- a sentence */
 
-    // Odd sentences are builds, even ones are spoken. Without a
-    // recogniser the whole round is builds.
-    function modeFor(i) { return (!canMic || i % 2 === 0) ? 'build' : 'say'; }
+    // Odd sentences are builds, even ones are given back whole — spoken
+    // if there is a microphone, typed if there is not.
+    function modeFor(i) { return i % 2 === 0 ? 'build' : 'say'; }
 
     function next() {
       if (state.dead) return;
@@ -153,7 +158,7 @@ window.Games.phrase = (function () {
 
       ui.count.textContent = (state.idx + 1) + '/' + deck.length;
       ctx.setSub('Sentence ' + (state.idx + 1) + ' of ' + deck.length +
-        ' · ' + (mode === 'build' ? 'build it' : 'say it'));
+        ' · ' + (mode === 'build' ? 'build it' : canMic ? 'say it' : 'type it'));
 
       drawCard(s, mode);
       if (mode === 'build') buildStage(s); else sayStage(s);
@@ -167,7 +172,7 @@ window.Games.phrase = (function () {
       ui.card.classList.add('deal');
 
       ui.card.appendChild(el('div.card-theme',
-        (mode === 'build' ? '🧩 build' : '🎤 say') + ' · ' + (s.theme || 'phrase')));
+        (mode === 'build' ? '🧩 build' : canMic ? '🎤 say' : '⌨️ type') + ' · ' + (s.theme || 'phrase')));
       ui.card.appendChild(el('div.card-word.phrase-prompt' + (from === 'he' ? '.rtl' : ''), s[from]));
       if (from === 'he') ui.card.appendChild(el('div.card-translit', s.t));
 
@@ -184,6 +189,7 @@ window.Games.phrase = (function () {
 
     function startClock(s) {
       stopClock();
+      if (untimed) { clock = U.noClock(); return; }
       clock = U.ticker(SENTENCE_MS, function (left) {
         ui.bar.style.width = Math.min(100, (left / SENTENCE_MS) * 100) + '%';
         ui.time.textContent = Math.ceil(left / 1000) + 's';
@@ -281,13 +287,69 @@ window.Games.phrase = (function () {
     /* ---------------------------------------------------------- say */
 
     function sayStage(s) {
+      // No recogniser, no choice to offer: typing *is* the whole-sentence
+      // challenge on this browser.
+      if (!canMic) return typeStage(s);
+
       clear(ui.action);
       ui.action.appendChild(el('div.say-zone',
         el('div.say-note', 'Say the whole sentence in ' + langName(to)),
         el('button.big-btn.primary.xl', {
           onclick: function () { SFX.flip(); openMic(s); }
-        }, '🎤 Say it')
+        }, '🎤 Say it'),
+        el('button.ghost-btn', {
+          onclick: function () { SFX.tap(); typeStage(s); }
+        }, '⌨️ Type it instead')
       ));
+    }
+
+    /* ---------------------------------------------------------- type */
+
+    /* Typing is the mic's equal, not its consolation prize: no tiles to
+       lean on, the same grader, the same points, and the same one extra
+       go at half points when it comes back wrong. */
+    function typeStage(s, note) {
+      if (state.locked) return;
+      var accepted = [s[to]].concat((s.alt && s.alt[to]) || []);
+
+      clear(ui.action);
+      var input = el('input.type-field' + (to === 'he' ? '.rtl' : ''), {
+        type: 'text',
+        autocomplete: 'off',
+        autocorrect: 'off',
+        autocapitalize: 'off',
+        spellcheck: 'false',
+        placeholder: 'Write it in ' + langName(to) + '…',
+        onkeydown: function (e) { if (e.key === 'Enter') fire(); }
+      });
+
+      function fire() {
+        if (state.locked) return;
+        var text = input.value.trim();
+        if (!text) { SFX.pass(); return; }
+
+        var quality = U.grade(text, accepted, to);
+        if (quality !== 'no') return win(s, quality);
+
+        SFX.wrong();
+        U.buzz(60);
+        if (state.attempt > 1) return fail(s);
+        state.attempt = 2;
+        typeStage(s, 'Not "' + text + '". One more go at half points.');
+        ctx.toast('Not quite, one more go at half points', 'warn');
+      }
+
+      ui.action.appendChild(el('div.say-zone.type-zone',
+        el('div.say-note' + (note ? '.miss' : ''),
+          note || 'Type the whole sentence in ' + langName(to)),
+        el('div.type-row',
+          input,
+          el('button.type-send', { 'aria-label': 'Send', onclick: fire }, '➤')),
+        canMic ? el('button.ghost-btn', {
+          onclick: function () { SFX.flip(); openMic(s); }
+        }, '🎤 Say it instead') : null
+      ));
+      try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
     }
 
     function openMic(s) {
@@ -338,8 +400,13 @@ window.Games.phrase = (function () {
         onEnd: function () { later(function () { settle('no'); }, 120); }
       });
 
-      // No recogniser handle means no mic on this device after all.
-      if (!mic) return buildStage(s);
+      // No recogniser handle means no mic on this device after all, for
+      // this sentence and every one after it.
+      if (!mic) {
+        canMic = false;
+        ctx.toast('No microphone here, type it instead', 'warn');
+        return typeStage(s);
+      }
       micTimer = setTimeout(function () { settle('no'); }, LISTEN_MS);
       timers.push(micTimer);
     }
@@ -352,6 +419,9 @@ window.Games.phrase = (function () {
         el('button.big-btn.primary.xl', {
           onclick: function () { SFX.flip(); openMic(s); }
         }, '🎤 Try again'),
+        el('button.ghost-btn', {
+          onclick: function () { SFX.tap(); typeStage(s); }
+        }, '⌨️ Type it instead'),
         el('button.ghost-btn', {
           onclick: function () { SFX.pass(); fail(s); }
         }, 'Show me →')

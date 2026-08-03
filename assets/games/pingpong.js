@@ -29,6 +29,7 @@ window.Games.pingpong = (function () {
   var MAX_LIVES = 3;
   var LIFE_BACK = [10, 20, 30];   // chain links that hand a heart back
   var REVEAL_MS = 1900;   // how long the right answer stays up after a miss
+  var LISTEN_MS = 6000;   // the mic window when there is no turn clock to borrow
 
   function mount(root, ctx) {
     root.classList.add('pingpong-game');
@@ -38,6 +39,7 @@ window.Games.pingpong = (function () {
     var yariv = Store.player('yariv');
     var order = [noa, yariv];   // Noa serves first, always
 
+    var untimed = Store.untimed();   // hearts still go, but never to the clock
     var words = (ctx.data && ctx.data.words) ? Store.levelled(ctx.data.words) : [];
     var queues = { 1: [], 2: [], 3: [] };
     var source = { 1: byLevel(1), 2: byLevel(2), 3: byLevel(3) };
@@ -114,7 +116,9 @@ window.Games.pingpong = (function () {
         el('ul.rules',
           el('li', '🔁 Your word is in the language you already speak. Say it in the one you are learning.'),
           el('li', '❤️ A miss costs a shared heart. Three misses and the run is over.'),
-          el('li', '⏱️ Ten seconds on the first turn, a little less on every turn after.'),
+          el('li', untimed
+            ? '♾️ No clock on a turn. Only a wrong answer costs a heart.'
+            : '⏱️ Ten seconds on the first turn, a little less on every turn after.'),
           el('li', '🔗 The chain never resets. One heart back at 10, 20 and 30.'),
           el('li', Speech.canListen()
             ? '🎤 Tap "I know it!", then say it out loud.'
@@ -141,7 +145,7 @@ window.Games.pingpong = (function () {
       ui.chain = el('div.pp-chain-num', '0');
       ui.turn = el('div.pp-turn');
       ui.bar = el('i');
-      ui.secs = el('div.pp-secs', '10.0');
+      ui.secs = el('div.pp-secs', untimed ? '∞' : '10.0');
 
       root.appendChild(el('div.hud.pp-hud',
         el('div.hud-cell', el('small', 'hearts'), ui.lives),
@@ -271,6 +275,7 @@ window.Games.pingpong = (function () {
     }
 
     function startClock(p, w) {
+      if (untimed) { clock = U.noClock(); return; }
       var lastSec = 99;
       clock = U.ticker(state.limit, function (left) {
         ui.secs.textContent = (left / 1000).toFixed(1);
@@ -340,8 +345,11 @@ window.Games.pingpong = (function () {
 
       if (!mic) return selfMark(p, w);
 
-      // Never outlive the turn clock, which ends the turn on its own.
-      micTimer = setTimeout(function () { settle(false); }, Math.max(500, clock ? clock.left() : 1000));
+      // Never outlive the turn clock, which ends the turn on its own. With
+      // no turn clock there is nothing to borrow, so the mic gets its own
+      // window — an open microphone cannot be left running for ever.
+      micTimer = setTimeout(function () { settle(false); },
+        untimed ? LISTEN_MS : Math.max(500, clock ? clock.left() : 1000));
     }
 
     // Firefox has no recogniser, and a couple sitting together can

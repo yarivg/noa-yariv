@@ -167,6 +167,52 @@
   word-break: break-word;
 }
 
+/* ---------------------------------------------------------- type */
+
+/* The typed answer sits where the mic button was, at the same size, so
+   choosing to type never reads as choosing the easier option. */
+.phrase-game .type-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.phrase-game .type-field {
+  flex: 1;
+  min-width: 0;
+  min-height: 66px;
+  padding: 0 18px;
+  border: 3px solid var(--line);
+  border-radius: 22px;
+  background: #f9f6fd;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 19px;
+  outline: none;
+}
+
+.phrase-game .type-field:focus { border-color: var(--purple); background: #fff; }
+
+.phrase-game .type-field.rtl {
+  text-align: right;
+  font-family: 'Heebo', system-ui, sans-serif;
+}
+
+.phrase-game .type-send {
+  width: 66px;
+  height: 66px;
+  flex: none;
+  border: none;
+  border-radius: 22px;
+  background: var(--purple);
+  color: #fff;
+  font-size: 24px;
+  box-shadow: 0 5px 0 #5b3ee0;
+}
+
+.phrase-game .type-send:active { transform: translateY(4px); box-shadow: 0 1px 0 #5b3ee0; }
+
 /* ---------------------------------------------------------- safety */
 
 /* Long French sentences and wide tiles must never push the page

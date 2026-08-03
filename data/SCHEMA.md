@@ -82,7 +82,9 @@ difficulty.
 
 `banned` is what the describer may **not** say, four per language: the obvious
 translation, the obvious category, the obvious sound, the obvious companion
-word. Banned words are shown in the describer's speaking language.
+word. The card is shown entirely in the describer's speaking language — the word
+and its four banned words both — so `banned.he` must never contain `he` itself,
+and the same for `fr`.
 
 ## data/chat.json
 

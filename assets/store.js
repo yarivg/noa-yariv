@@ -87,6 +87,7 @@ window.Store = (function () {
     return {
       current: '',
       difficulty: 'mid',
+      untimed: false,
       noa: blankPlayer(),
       yariv: blankPlayer(),
       coop: { wins: 0, losses: 0, bestStreak: 0, best: {} }
@@ -107,6 +108,7 @@ window.Store = (function () {
       if (saved.coop) for (var c in base.coop) if (saved.coop[c] !== undefined) base.coop[c] = saved.coop[c];
       if (typeof saved.current === 'string') base.current = saved.current;
       if (BANDS[saved.difficulty]) base.difficulty = saved.difficulty;
+      if (typeof saved.untimed === 'boolean') base.untimed = saved.untimed;
     } catch (e) { /* first run, or someone cleared the browser */ }
     return base;
   }
@@ -151,6 +153,15 @@ window.Store = (function () {
     return kept.length >= (minimum || 8) ? kept : list;
   }
   function coop() { return data.coop; }
+
+  /* ---------------------------------------------------------- the clock */
+
+  /* The other global setting: play with the clock off. Every game keeps
+     its scoring and its lives, and hands out a button to end the round
+     by hand instead of a buzzer. Time bonuses cannot be earned, because
+     there is no time to have left over. */
+  function untimed() { return !!data.untimed; }
+  function setUntimed(on) { data.untimed = !!on; write(); }
 
   function levelOf(xp) { return Math.floor(Math.sqrt(xp / 60)) + 1; }
   function xpForLevel(n) { return Math.pow(n - 1, 2) * 60; }
@@ -268,6 +279,7 @@ window.Store = (function () {
     players: players, player: player, current: current, setCurrent: setCurrent, other: other,
     stats: stats, coop: coop, progress: progress, levelOf: levelOf, title: title,
     bands: bands, difficulty: difficulty, band: band, setDifficulty: setDifficulty, levelled: levelled,
+    untimed: untimed, setUntimed: setUntimed,
     award: award, answered: answered, playedGame: playedGame, record: record, coopResult: coopResult,
     badgeList: badgeList, hasBadge: hasBadge, earn: earn, checkAuto: checkAuto,
     reset: reset

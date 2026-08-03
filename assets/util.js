@@ -173,6 +173,17 @@ window.U = (function () {
     };
   }
 
+  /* The same handle a ticker hands back, with nothing behind it: what a
+     game holds when the player has switched the clock off. It never
+     ticks and never ends, so the round finishes on the player's word. */
+  function noClock() {
+    return {
+      stop: function () { },
+      add: function () { },
+      left: function () { return Infinity; }
+    };
+  }
+
   function confetti(host) {
     var burst = el('div.confetti');
     var glyphs = ['🎉', '⭐', '✨', '🎊', '💥', '🏆'];
@@ -191,6 +202,6 @@ window.U = (function () {
     el: el, clear: clear, $: $,
     norm: norm, strip: strip, grade: grade, mentions: mentions, distance: distance,
     shuffle: shuffle, sample: sample, pick: pick,
-    clock: clock, buzz: buzz, ticker: ticker, confetti: confetti
+    clock: clock, buzz: buzz, ticker: ticker, noClock: noClock, confetti: confetti
   };
 })();

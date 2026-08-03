@@ -7,9 +7,12 @@
    The whole point is the direction of the language. You describe in
    the language you are LEARNING, and your partner hears their own
    native language, so they can guess quickly and you do all the
-   work. The card therefore shows the describer the word in their
-   NATIVE tongue (they need to know what to convey) and the four
-   forbidden words in the language they are about to speak.
+   work.
+
+   The whole card is therefore in that one language: the word and its
+   four forbidden words are both in the tongue you are about to speak,
+   so nothing on it has to be translated mid-sentence. English is one
+   tap away for when the word itself is the thing you do not know.
 
    Two halves, one shared score, because a pair that argues about
    whose points these are has stopped playing together.
@@ -41,6 +44,7 @@ window.Games.tabou = (function () {
       return { who: who, score: 0, got: 0, passes: 0, slips: 0 };
     }
 
+    var untimed = Store.untimed();   // no buzzer: each half ends on a button
     var cards = (ctx.data && ctx.data.tabou) || [];
     var deck = U.shuffle(cards);
     var i = -1;                 // runs across both halves so half two gets fresh cards
@@ -77,8 +81,11 @@ window.Games.tabou = (function () {
           'Describe the word out loud in the language you are learning. Your partner guesses in their own language.'),
         el('ul.rules',
           el('li', '📱 Only the describer looks at the screen.'),
-          el('li', '🚫 Four words are forbidden. Say one and it costs you 5.'),
-          el('li', '⏱️ 90 seconds each. ' + noa.name + ' first, then ' + yariv.name + '.'),
+          el('li', '🗣️ The word and its four forbidden words are both in the language you are speaking. English is a tap away.'),
+          el('li', '🚫 Say a forbidden word and it costs you 5.'),
+          el('li', untimed
+            ? '♾️ No clock. ' + noa.name + ' goes first and ends her half when she is done, then ' + yariv.name + '.'
+            : '⏱️ 90 seconds each. ' + noa.name + ' first, then ' + yariv.name + '.'),
           el('li', '🤝 One score for the two of you.')
         ),
         el('div.tb-who-row', whoChip(noa), whoChip(yariv)),
@@ -132,7 +139,7 @@ window.Games.tabou = (function () {
       var me = halves[h].who;
       clear(root);
 
-      ui.time = el('div.hud-time', U.clock(HALF_MS));
+      ui.time = el('div.hud-time', untimed ? '∞' : U.clock(HALF_MS));
       ui.score = el('div.hud-score', String(total()));
       ui.combo = el('div.hud-combo');
       ui.bar = el('i');
@@ -158,7 +165,7 @@ window.Games.tabou = (function () {
 
     function startHalf() {
       lastSec = Math.ceil(HALF_MS / 1000);
-      clock = U.ticker(HALF_MS, function (left) {
+      clock = untimed ? U.noClock() : U.ticker(HALF_MS, function (left) {
         ui.time.textContent = U.clock(left);
         ui.bar.style.width = Math.min(100, (left / HALF_MS) * 100) + '%';
         ui.time.classList.toggle('urgent', left < 10000);
@@ -188,8 +195,7 @@ window.Games.tabou = (function () {
       shownAt = Date.now();
 
       var me = halves[h].who;
-      var show = me.native;    // the word, in the language the describer already has
-      var speak = me.target;   // what they must talk in, and what is forbidden
+      var speak = me.target;   // the whole card: what they talk in, and what is forbidden
       var w = current();
 
       clear(ui.card);
@@ -198,8 +204,18 @@ window.Games.tabou = (function () {
       ui.card.classList.add('deal');
 
       ui.card.appendChild(el('div.card-theme', '🗣️ get them to say it'));
-      ui.card.appendChild(el('div.card-word' + (show === 'he' ? '.rtl' : ''), w[show]));
-      if (show === 'he') ui.card.appendChild(el('div.card-translit', w.t));
+      ui.card.appendChild(el('div.card-word' + (speak === 'he' ? '.rtl' : ''), w[speak]));
+      if (speak === 'he') ui.card.appendChild(el('div.card-translit', w.t));
+
+      // The word is in the language being learnt, so it can be the one
+      // thing on the card the describer cannot read. English, once, on ask.
+      ui.card.appendChild(el('button.hint-btn', {
+        onclick: function (e) {
+          e.stopPropagation();
+          SFX.tap();
+          e.target.replaceWith(el('div.card-en', '🇬🇧 ' + w.en));
+        }
+      }, 'English?'));
 
       var banned = (w.banned && w.banned[speak]) || [];
       var list = el('div.tb-bans' + (speak === 'he' ? '.rtl' : ''));
@@ -227,7 +243,9 @@ window.Games.tabou = (function () {
         el('button.big-btn.xl.tb-pass' + (left <= 0 ? '.is-spent' : ''), {
           disabled: left <= 0,
           onclick: function () { pass(); }
-        }, '⏭️ Pass', el('small', left > 0 ? left + ' left · −3s' : 'none left')),
+        }, '⏭️ Pass', el('small', left > 0
+          ? (untimed ? left + ' left' : left + ' left · −3s')
+          : 'none left')),
         el('button.big-btn.xl.good.tb-got', {
           onclick: function () { got(); }
         }, '✅ Got it')
@@ -235,6 +253,12 @@ window.Games.tabou = (function () {
       ui.action.appendChild(el('button.ghost-btn.tb-slip', {
         onclick: function () { slip(); }
       }, '🚫 I said a banned word (−5)'));
+      // With no buzzer, the describer decides when the half is over.
+      if (untimed) {
+        ui.action.appendChild(el('button.ghost-btn', {
+          onclick: function () { SFX.tap(); endHalf(); }
+        }, h === 0 ? '🔄 End my half' : '🏁 End the game'));
+      }
     }
 
     /* ---------------------------------------------------------- verdicts */
@@ -271,7 +295,7 @@ window.Games.tabou = (function () {
       SFX.pass();
       U.buzz(15);
       if (clock) clock.add(-PASS_COST_MS);   // the pass is paid for in seconds
-      flash('bad', '−3s', 'passed');
+      flash('bad', untimed ? '⏭️' : '−3s', 'passed');
       paint();
       advance(320);
     }
@@ -377,7 +401,7 @@ window.Games.tabou = (function () {
       ctx.finish({
         won: won,
         emoji: score >= 160 ? '🧠' : score >= 80 ? '🎉' : '👏',
-        title: won ? 'New team record!' : score >= 80 ? 'Good talking' : 'Time!',
+        title: won ? 'New team record!' : score >= 80 ? 'Good talking' : untimed ? 'Cards down' : 'Time!',
         subtitle: won
           ? 'Beat your old best of ' + bestBefore + '.'
           : 'Your best together is ' + bestBefore + '.',

@@ -77,6 +77,7 @@ window.Games.headsup = (function () {
     var all = (ctx.data && ctx.data.headsup) || [];
     var noa = Store.player('noa');
     var yariv = Store.player('yariv');
+    var untimed = Store.untimed();   // no buzzer: the turn ends on the 🏁 button
 
     var game = {
       holder: null,      // player object holding the phone this turn
@@ -176,7 +177,9 @@ window.Games.headsup = (function () {
           el('li', '📱 Turn the phone sideways and hold it flat against your forehead, screen facing out.'),
           el('li', '🗣️ Your partner describes the word in ' + 'their own language, never saying it.'),
           el('li', '⬇️ Tilt down = got it. ⬆️ Tilt up = pass. Or tap: bottom half yes, top half skip.'),
-          el('li', '⏱️ 60 seconds each, then swap the phone over.')
+          el('li', untimed
+            ? '♾️ No clock. Tap 🏁 in the corner to end a turn, then swap the phone over.'
+            : '⏱️ 60 seconds each, then swap the phone over.')
         ),
         el('h3.hu-step', '1 · Who is holding the phone?'),
         whoRow,
@@ -233,7 +236,7 @@ window.Games.headsup = (function () {
         turn.running = true;
         turn.busy = false;
         watchTilt();
-        clock = U.ticker(TURN_MS, tick, endTurn);
+        clock = untimed ? U.noClock() : U.ticker(TURN_MS, tick, endTurn);
         nextCard();
       });
     }
@@ -242,7 +245,7 @@ window.Games.headsup = (function () {
       clear(root);
       root.classList.add('playing');
 
-      ui.time = el('div.hud-time', '1:00');
+      ui.time = el('div.hud-time', untimed ? '∞' : '1:00');
       ui.score = el('div.hud-score', '0');
       ui.bar = el('i');
       ui.emoji = el('div.hu-emoji', '🙈');
@@ -262,6 +265,16 @@ window.Games.headsup = (function () {
           el('div.hud-cell', ui.time),
           el('div.hu-bar', ui.bar),
           el('div.hud-cell', ui.score),
+          // Without a buzzer the turn has to be ended by hand. It sits by
+          // the quit button because that is the one corner the holder is
+          // not tapping for verdicts.
+          untimed ? el('button.hu-quit.hu-end', {
+            onclick: function (e) {
+              e.stopPropagation();
+              SFX.tap();
+              endTurn();
+            }
+          }, '🏁') : null,
           el('button.hu-quit', {
             onclick: function (e) {
               e.stopPropagation();
