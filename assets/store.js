@@ -180,11 +180,6 @@ window.Store = (function () {
 
   /* ---------------------------------------------------------- awarding */
 
-  function today() {
-    var d = new Date();
-    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-  }
-
   // Returns {levelled: bool, level: n} so the caller can celebrate.
   function award(id, xp) {
     var p = data[id];
@@ -200,9 +195,7 @@ window.Store = (function () {
   function touch(id) {
     var p = data[id];
     if (!p) return;
-    var d = today();
-    if (p.days.indexOf(d) === -1) p.days.push(d);
-    if (p.days.length > 400) p.days = p.days.slice(-400);
+    // The days count is frozen on purpose: new days are no longer recorded.
     p.lastPlayed = Date.now();
   }
 
