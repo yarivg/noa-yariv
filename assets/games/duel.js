@@ -317,7 +317,7 @@ window.Games.duel = (function () {
   var THEMES = {
     greetings: '👋', people: '👨‍👩‍👧', food: '🍽️', home: '🏠', city: '🏙️',
     time: '🕒', verbs: '🏃', adjectives: '🎨', nature: '🌳', numbers: '🔢',
-    body: '🖐️', travel: '✈️', feelings: '💭', clothes: '👕', work: '💼'
+    body: '🖐️', travel: '✈️', feelings: '💗', clothes: '👕', work: '💼'
   };
   function themeEmoji(t) { return THEMES[t] || '🃏'; }
 
