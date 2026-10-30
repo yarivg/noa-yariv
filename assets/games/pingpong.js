@@ -112,14 +112,14 @@ window.Games.pingpong = (function () {
         el('h2', 'Ping-Pong'),
         el('p.intro-lead',
           'One phone. ' + noa.name + ' answers, then ' + yariv.name + ', then ' + noa.name +
-          '. Three hearts between you and one chain to protect.'),
+          '. Three lives between you and one chain to protect.'),
         el('ul.rules',
           el('li', '🔁 Your word is in the language you already speak. Say it in the one you are learning.'),
-          el('li', '❤️ A miss costs a shared heart. Three misses and the run is over.'),
+          el('li', '🏓 A miss costs a shared life. Three misses and the run is over.'),
           el('li', untimed
-            ? '♾️ No clock on a turn. Only a wrong answer costs a heart.'
+            ? '♾️ No clock on a turn. Only a wrong answer costs a life.'
             : '⏱️ Ten seconds on the first turn, a little less on every turn after.'),
-          el('li', '🔗 The chain never resets. One heart back at 10, 20 and 30.'),
+          el('li', '🔗 The chain never resets. One life back at 10, 20 and 30.'),
           el('li', Speech.canListen()
             ? '🎤 Tap "I know it!", then say it out loud.'
             : '👀 No microphone in this browser — you mark each other. Chrome or Safari gives you the mic.'),
@@ -148,7 +148,7 @@ window.Games.pingpong = (function () {
       ui.secs = el('div.pp-secs', untimed ? '∞' : '10.0');
 
       root.appendChild(el('div.hud.pp-hud',
-        el('div.hud-cell', el('small', 'hearts'), ui.lives),
+        el('div.hud-cell', el('small', 'lives'), ui.lives),
         el('div.hud-cell.pp-chain-cell', el('small', 'chain'), ui.chain),
         el('div.hud-cell', el('small', 'serving'), ui.turn)
       ));
@@ -179,7 +179,7 @@ window.Games.pingpong = (function () {
       clear(ui.lives);
       for (var i = 0; i < MAX_LIVES; i++) {
         ui.lives.appendChild(el('span.pp-heart' + (i < state.lives ? '' : '.gone'),
-          i < state.lives ? '❤️' : '🖤'));
+          i < state.lives ? '🏓' : '⚫'));
       }
       ui.chain.textContent = String(state.chain);
       clear(ui.turn);
@@ -206,7 +206,7 @@ window.Games.pingpong = (function () {
         el('div.pp-ho-task', p.name + ' says it in ' + langName(p.target) + ' ' + p.targetFlag),
         el('div.pp-ho-state',
           el('span', '🔗 ' + state.chain),
-          el('span', repeat('❤️', state.lives) + repeat('🖤', MAX_LIVES - state.lives))
+          el('span', repeat('🏓', state.lives) + repeat('⚫', MAX_LIVES - state.lives))
         ),
         el('button.big-btn.primary.xl', {
           onclick: function () {
@@ -408,9 +408,9 @@ window.Games.pingpong = (function () {
       if (LIFE_BACK.indexOf(state.chain) !== -1) {
         if (state.lives < MAX_LIVES) {
           state.lives++;
-          ctx.toast('❤️ ' + state.chain + ' links — a heart back!', 'good');
+          ctx.toast('🏓 ' + state.chain + ' links — a life back!', 'good');
         } else {
-          ctx.toast('💖 Hearts already full at ' + state.chain, 'good');
+          ctx.toast('🏓 Lives already full at ' + state.chain, 'good');
         }
         paint();
       } else {
@@ -532,7 +532,7 @@ window.Games.pingpong = (function () {
   var THEMES = {
     greetings: '👋', people: '👨‍👩‍👧', food: '🍽️', home: '🏠', city: '🏙️',
     time: '🕒', verbs: '🏃', adjectives: '🎨', nature: '🌳', numbers: '🔢',
-    body: '🖐️', travel: '✈️', feelings: '💗', clothes: '👕', work: '💼'
+    body: '🖐️', travel: '✈️', feelings: '💭', clothes: '👕', work: '💼'
   };
   function themeEmoji(t) { return THEMES[t] || '🏓'; }
 
